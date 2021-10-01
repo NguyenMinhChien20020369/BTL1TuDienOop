@@ -17,4 +17,18 @@ public class DictionaryManagement {
       myDictionary.addWord(tempWord);
     }
   }
+
+  public static void addWordFormCommandLine(Word wordsToAdd, Dictionary myDictionary) {
+    myDictionary.addWord(wordsToAdd);
+  }
+
+  public static void editWordFormCommandLine(Word wordsToEdit, Dictionary myDictionary) {
+    Word oldWord = DictionaryCommandLine.dictionarySearcher(wordsToEdit, myDictionary);
+    oldWord.setWord_explain(wordsToEdit.getWord_explain());
+  }
+
+  public static void DelWordFormCommandLine(Word wordsToDel, Dictionary myDictionary) {
+    wordsToDel = DictionaryCommandLine.dictionarySearcher(wordsToDel, myDictionary);
+    myDictionary.getWordList().remove(wordsToDel);
+  }
 }
