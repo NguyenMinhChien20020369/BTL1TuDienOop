@@ -17,5 +17,4 @@ public class DictionaryManagement {
       myDictionary.addWord(tempWord);
     }
   }
-
 }
