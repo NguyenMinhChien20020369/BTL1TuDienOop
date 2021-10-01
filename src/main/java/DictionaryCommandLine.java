@@ -15,14 +15,18 @@ public class DictionaryCommandLine {
     showAllWords(myDictionary);
   }
 
+  public static Word dictionarySearcher(Word wordsToEdit, Dictionary myDictionary) {
+    return myDictionary.getWordList().get(1);
+  }
+
   public static void main(String[] args) {
     Dictionary myDictionary = new Dictionary();
     dictionaryBasic(myDictionary);
     Scanner sc = new Scanner(System.in);
-    Word wordsToAdd = new Word();
-    wordsToAdd.setWord_target(sc.nextLine());
-    wordsToAdd.setWord_explain(sc.nextLine());
-    DictionaryManagement.addWordFormCommandLine(wordsToAdd, myDictionary);
+    Word wordsToDel = new Word();
+    wordsToDel.setWord_target(sc.nextLine());
+    wordsToDel.setWord_explain(sc.nextLine());
+    DictionaryManagement.DelWordFormCommandLine(wordsToDel, myDictionary);
     showAllWords(myDictionary);
   }
 }

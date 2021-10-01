@@ -23,11 +23,12 @@ public class DictionaryManagement {
   }
 
   public static void editWordFormCommandLine(Word wordsToEdit, Dictionary myDictionary) {
-    Word oldWord = dictionarySearcher();
+    Word oldWord = DictionaryCommandLine.dictionarySearcher(wordsToEdit, myDictionary);
     oldWord.setWord_explain(wordsToEdit.getWord_explain());
   }
 
   public static void DelWordFormCommandLine(Word wordsToDel, Dictionary myDictionary) {
+    wordsToDel = DictionaryCommandLine.dictionarySearcher(wordsToDel, myDictionary);
     myDictionary.getWordList().remove(wordsToDel);
   }
 }
