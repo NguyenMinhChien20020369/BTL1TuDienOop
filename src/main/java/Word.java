@@ -3,8 +3,13 @@ public class Word {
   private String word_target;
   private String word_explain;
 
-  Word() {
+  public Word() {
+    this("", "");
+  }
 
+  public Word(String Target, String Explain) {
+    this.word_target = Target;
+    this.word_explain = Explain;
   }
 
   public String getWord_target() {

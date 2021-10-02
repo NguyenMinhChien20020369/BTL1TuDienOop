@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DictionaryManagement {
-
+  protected Dictionary dictionary = new Dictionary();
   public static void insertFromCommandline(Dictionary myDictionary) {
     Scanner sc = new Scanner(System.in);
     int numberOfWords = sc.nextInt();
@@ -16,6 +17,33 @@ public class DictionaryManagement {
       System.out.println(" Ban vua nhap vao: " + tempWord.getWord_explain());
       myDictionary.addWord(tempWord);
     }
+  }
+//Present Vietnamese meaning of the word
+  public void dictionaryLookup() {
+    Scanner scanner = new Scanner(System.in);
+    String Target = scanner.nextLine();
+    Word word = dictionary.lookup(Target);
+    System.out.println(word.getWord_explain());
+  }
+
+  public Word dictionaryLookup(String Target) {
+    return dictionary.lookup(Target);
+  }
+
+  public void dictionarySearcher() {
+    Scanner scanner = new Scanner(System.in);
+    String Target = scanner.nextLine();
+    ArrayList<Word> words = dictionary.searcher(Target);
+    for (Word word : words) {
+      System.out.print(word.getWord_target());
+      System.out.println(" " + word.getWord_explain());
+    }
+  }
+
+  //Return result with arraylist contained words with similar prefix.
+  public ArrayList<Word> dictionarySearcher(String searchText) {
+    if (searchText.equals("")) return new ArrayList<>();
+    return dictionary.searcher(searchText);
   }
 
   public static void addWordFormCommandLine(Word wordsToAdd, Dictionary myDictionary) {
