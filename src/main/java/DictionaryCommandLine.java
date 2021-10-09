@@ -23,5 +23,8 @@ public class DictionaryCommandLine {
   public static void main(String[] args) {
     Dictionary myDictionary = new Dictionary();
     dictionaryAdvanced(myDictionary);
+    DictionaryManagement.deleteWordFromDictionary("Z- beam", myDictionary);
+    showAllWords(myDictionary);
+    DictionaryManagement.dictionaryExportToFile(myDictionary);
   }
 }

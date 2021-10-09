@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Dictionary {
 
@@ -28,14 +29,20 @@ public class Dictionary {
     int mid = start + (end - start) / 2;
     Word word = wordList.get(mid);
     String currentTarget = word.getWord_target();
-    int compare = currentTarget.compareTo(Target);
-    if (compare == 0) {
-      return word;
-    }
-    if (compare > 0) {
+    if (currentTarget.toLowerCase(Locale.ROOT).charAt(0) < Target.toLowerCase(Locale.ROOT).charAt(0)) {
+      return binaryLookup(mid + 1, end, Target);
+    } else if (currentTarget.toLowerCase(Locale.ROOT).charAt(0) > Target.toLowerCase(Locale.ROOT).charAt(0)) {
       return binaryLookup(start, mid - 1, Target);
+    } else {
+      int compare = currentTarget.compareTo(Target);
+      if (compare == 0) {
+        return word;
+      }
+      if (compare > 0) {
+        return binaryLookup(start, mid - 1, Target);
+      }
+      return binaryLookup(mid + 1, end, Target);
     }
-    return binaryLookup(mid + 1, end, Target);
   }
 
   //Find the index of the word in the dictionary

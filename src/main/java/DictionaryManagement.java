@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -93,7 +95,21 @@ public class DictionaryManagement {
       fr.close();
       br.close();
     } catch (Exception ex) {
-      System.out.println("Read error file: " + ex);
+      System.out.println("File read error: " + ex);
+    }
+  }
+
+  public static void dictionaryExportToFile(Dictionary myDictionary) {
+    try {
+      File f = new File("D:/chuanMuc/BTL1TuDienOop/dictionaries.txt");
+      FileWriter fw = new FileWriter(f);
+      for (int i = 0; i < myDictionary.getWordList().size(); i++) {
+        fw.write(myDictionary.getWordList().get(i).getWord_target() + '\t');
+        fw.write(myDictionary.getWordList().get(i).getWord_explain() + '\n');
+      }
+      fw.close();
+    } catch (IOException ex) {
+      System.out.println("File write error: " + ex);
     }
   }
 }
