@@ -1,8 +1,15 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DictionaryManagement {
+
   protected Dictionary dictionary = new Dictionary();
+
   public static void insertFromCommandline(Dictionary myDictionary) {
     Scanner sc = new Scanner(System.in);
     int numberOfWords = sc.nextInt();
@@ -18,7 +25,8 @@ public class DictionaryManagement {
       myDictionary.addWord(tempWord);
     }
   }
-//Present Vietnamese meaning of the word
+
+  //Present Vietnamese meaning of the word
   public void dictionaryLookup() {
     Scanner scanner = new Scanner(System.in);
     String Target = scanner.nextLine();
@@ -42,21 +50,66 @@ public class DictionaryManagement {
 
   //Return result with arraylist contained words with similar prefix.
   public ArrayList<Word> dictionarySearcher(String searchText) {
-    if (searchText.equals("")) return new ArrayList<>();
+    if (searchText.equals("")) {
+      return new ArrayList<Word>();
+    }
     return dictionary.searcher(searchText);
   }
 
-  public static void addWordFormCommandLine(Word wordsToAdd, Dictionary myDictionary) {
-    myDictionary.addWord(wordsToAdd);
+  public static void addWordsToDictionary(Word wordsToAdd, Dictionary myDictionary) {
+    myDictionary.getWordList().add(wordsToAdd);
   }
 
-  public static void editWordFormCommandLine(Word wordsToEdit, Dictionary myDictionary) {
-    Word oldWord = DictionaryCommandLine.dictionarySearcher(wordsToEdit, myDictionary);
-    oldWord.setWord_explain(wordsToEdit.getWord_explain());
+  public static void editWordsInTheDictionary(Word correctedWord, Dictionary myDictionary) {
+    Word oldWord = myDictionary.lookup(correctedWord.getWord_target());
+    oldWord.setWord_explain(correctedWord.getWord_explain());
   }
 
-  public static void DelWordFormCommandLine(Word wordsToDel, Dictionary myDictionary) {
-    wordsToDel = DictionaryCommandLine.dictionarySearcher(wordsToDel, myDictionary);
-    myDictionary.getWordList().remove(wordsToDel);
+  public static void deleteWordFromDictionary(String target, Dictionary myDictionary) {
+    myDictionary.getWordList().remove(myDictionary.lookup(target));
+  }
+
+  public static void insertFromFile(Dictionary myDictionary) {
+    try {
+      File f = new File("D:/chuanMuc/BTL1TuDienOop/dictionaries.txt");
+      FileReader fr = new FileReader(f);
+      BufferedReader br = new BufferedReader(fr);
+      String line;
+      while ((line = br.readLine()) != null) {
+        String tempWord_target = "";
+        String tempWord_explain = "";
+        boolean takeExplain = false;
+        for (int i = 0; i < line.length(); i++) {
+          if (takeExplain) {
+            tempWord_explain = tempWord_explain.concat(Character.toString(line.charAt(i)));
+            continue;
+          }
+          if (line.charAt(i) != '\t') {
+            tempWord_target = tempWord_target.concat(Character.toString(line.charAt(i)));
+          } else {
+            takeExplain = true;
+          }
+        }
+        addWordsToDictionary(new Word(tempWord_target, tempWord_explain), myDictionary);
+      }
+      fr.close();
+      br.close();
+    } catch (Exception ex) {
+      System.out.println("File read error: " + ex);
+    }
+  }
+
+  public static void dictionaryExportToFile(Dictionary myDictionary) {
+    try {
+      File f = new File("D:/chuanMuc/BTL1TuDienOop/dictionaries.txt");
+      FileWriter fw = new FileWriter(f);
+      for (int i = 0; i < myDictionary.getWordList().size(); i++) {
+        fw.write(myDictionary.getWordList().get(i).getWord_target() + '\t');
+        fw.write(myDictionary.getWordList().get(i).getWord_explain() + '\n');
+      }
+      fw.close();
+    } catch (IOException ex) {
+      System.out.println("File write error: " + ex);
+    }
   }
 }

@@ -15,18 +15,16 @@ public class DictionaryCommandLine {
     showAllWords(myDictionary);
   }
 
-  public static Word dictionarySearcher(Word wordsToEdit, Dictionary myDictionary) {
-    return myDictionary.getWordList().get(1);
+  public static void dictionaryAdvanced(Dictionary myDictionary) {
+    DictionaryManagement.insertFromFile(myDictionary);
+    showAllWords(myDictionary);
   }
 
   public static void main(String[] args) {
     Dictionary myDictionary = new Dictionary();
-    dictionaryBasic(myDictionary);
-    Scanner sc = new Scanner(System.in);
-    Word wordsToDel = new Word();
-    wordsToDel.setWord_target(sc.nextLine());
-    wordsToDel.setWord_explain(sc.nextLine());
-    DictionaryManagement.DelWordFormCommandLine(wordsToDel, myDictionary);
+    dictionaryAdvanced(myDictionary);
+    DictionaryManagement.deleteWordFromDictionary("Z- beam", myDictionary);
     showAllWords(myDictionary);
+    DictionaryManagement.dictionaryExportToFile(myDictionary);
   }
 }
