@@ -8,8 +8,8 @@ public class Word {
   }
 
   public Word(String Target, String Explain) {
-    this.word_target = Target;
-    this.word_explain = Explain;
+    this.word_target = Target.trim();
+    this.word_explain = Explain.trim();
   }
 
   public String getWord_target() {
@@ -17,7 +17,7 @@ public class Word {
   }
 
   public void setWord_target(String tempWord_target) {
-    this.word_target = tempWord_target;
+    this.word_target = tempWord_target.trim();
   }
 
   public String getWord_explain() {
@@ -25,7 +25,7 @@ public class Word {
   }
 
   public void setWord_explain(String tempWord_explain) {
-    this.word_explain = tempWord_explain;
+    this.word_explain = tempWord_explain.trim();
   }
 
 

@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class DictionaryCommandLine {
@@ -23,8 +25,21 @@ public class DictionaryCommandLine {
   public static void main(String[] args) {
     Dictionary myDictionary = new Dictionary();
     dictionaryAdvanced(myDictionary);
-    DictionaryManagement.deleteWordFromDictionary("Z- beam", myDictionary);
-    showAllWords(myDictionary);
+    //DictionaryManagement.deleteWordFromDictionary("Z- beam", myDictionary);
+    //DictionaryManagement.addWordsToDictionary(new Word("has", "là "), myDictionary);
+    myDictionary.getWordList().sort(new Comparator<Word>() {
+      @Override
+      public int compare(Word w1, Word w2) {
+        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase().charAt(0)) {
+          return -1;
+        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase().charAt(0)) {
+          return 1;
+        }
+        return w1.getWord_target().toLowerCase().compareTo(w2.getWord_target().toLowerCase());
+      }
+    });
+    //showAllWords(myDictionary);
+    System.out.println(myDictionary.lookup("Disputes").getWord_explain());
     DictionaryManagement.dictionaryExportToFile(myDictionary);
   }
 }

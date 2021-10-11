@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -57,7 +58,35 @@ public class DictionaryManagement {
   }
 
   public static void addWordsToDictionary(Word wordsToAdd, Dictionary myDictionary) {
-    myDictionary.getWordList().add(wordsToAdd);
+    Word lookedUpWord = myDictionary.lookup(wordsToAdd.getWord_target());
+    if (lookedUpWord == null) {
+      myDictionary.getWordList().add(wordsToAdd);
+      return;
+    }
+    String tempWord_explain = "";
+    for (int i = 0; i < lookedUpWord.getWord_explain().length(); i++) {
+      if (lookedUpWord.getWord_explain().charAt(i) == ' ') {
+        tempWord_explain = "";
+      }
+      if (lookedUpWord.getWord_explain().charAt(i) != ','
+          && lookedUpWord.getWord_explain().charAt(i) != ';') {
+        tempWord_explain = tempWord_explain.concat(
+            Character.toString(lookedUpWord.getWord_explain().charAt(i)));
+        if (i == lookedUpWord.getWord_explain().length() - 1) {
+          tempWord_explain = tempWord_explain.trim();
+          if (tempWord_explain.equals(wordsToAdd.getWord_explain())) {
+            return;
+          }
+        }
+      } else {
+        tempWord_explain = tempWord_explain.trim();
+        if (tempWord_explain.equals(wordsToAdd.getWord_explain())) {
+          return;
+        }
+      }
+    }
+    lookedUpWord.setWord_explain(
+        lookedUpWord.getWord_explain() + ", " + wordsToAdd.getWord_explain());
   }
 
   public static void editWordsInTheDictionary(Word correctedWord, Dictionary myDictionary) {
@@ -90,7 +119,8 @@ public class DictionaryManagement {
             takeExplain = true;
           }
         }
-        addWordsToDictionary(new Word(tempWord_target, tempWord_explain), myDictionary);
+        addWordsToDictionary(new Word(tempWord_target.trim(), tempWord_explain.trim()),
+            myDictionary);
       }
       fr.close();
       br.close();
