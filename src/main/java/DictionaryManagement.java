@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -61,6 +62,7 @@ public class DictionaryManagement {
     Word lookedUpWord = myDictionary.lookup(wordsToAdd.getWord_target());
     if (lookedUpWord == null) {
       myDictionary.getWordList().add(wordsToAdd);
+      sortDictionary(myDictionary);
       return;
     }
     String tempWord_explain = "";
@@ -87,6 +89,7 @@ public class DictionaryManagement {
     }
     lookedUpWord.setWord_explain(
         lookedUpWord.getWord_explain() + ", " + wordsToAdd.getWord_explain());
+    sortDictionary(myDictionary);
   }
 
   public static void editWordsInTheDictionary(Word correctedWord, Dictionary myDictionary) {
@@ -141,5 +144,19 @@ public class DictionaryManagement {
     } catch (IOException ex) {
       System.out.println("File write error: " + ex);
     }
+  }
+
+  public static void sortDictionary(Dictionary myDictionary) {
+    myDictionary.getWordList().sort(new Comparator<Word>() {
+      @Override
+      public int compare(Word w1, Word w2) {
+        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase().charAt(0)) {
+          return -1;
+        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase().charAt(0)) {
+          return 1;
+        }
+        return w1.getWord_target().toLowerCase().compareTo(w2.getWord_target().toLowerCase());
+      }
+    });
   }
 }
