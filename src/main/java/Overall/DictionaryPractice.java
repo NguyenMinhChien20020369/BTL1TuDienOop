@@ -1,6 +1,10 @@
+package Overall;
+
+import Overall.DictionaryManagement;
+
 import java.util.ArrayList;
 
-public class DictionaryPractice extends DictionaryManagement{
+public class DictionaryPractice extends DictionaryManagement {
         public void showSearcher(String Target) {
             ArrayList<Word> words = this.dictionarySearcher(Target);
             for (Word word : words) {

@@ -1,9 +1,13 @@
+package Overall;
+
+import Overall.DictionaryPractice;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class HistorySearching extends DictionaryPractice{
+public class HistorySearching extends DictionaryPractice {
     public void InsertFromFile() {
         System.out.println("Start insert history from file.");
         ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();

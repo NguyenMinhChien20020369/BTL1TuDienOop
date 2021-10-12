@@ -98,8 +98,7 @@ blank test	sự thử bất kỳ, mẫu thử ngẫu nhiên
 blow test	sự thử sức chịu va đập; sự thử độ bền va đập
 blow-bending test	sự thử uốn va đập
 bond beam	dầm nối
-Bonded tendon	Cốt thép dự ứng lực có dính bám với bê tông
-Bonded tendon	Cốt thép dự ứng lực có dính bám với bê tông
+Bonded tendon	Cốt thép dự ứng lực có dính bám với bê tông, Cốt thép dự ứng lực có dính bám với bê tông
 Bored pile	Cọc khoan nhồi
 boring test	sự thử bằng khoan
 Bottom lateral	Thanh giằng chéo ở mọc hạ của dàn
@@ -226,14 +225,12 @@ Completion date	Ngày hoàn thành
 Completion of contract	Hoàn thành hợp đồng
 composit beam	dầm hợp thể, dầm vật liệu hỗn hợp
 composite load	tải trọng phức hợp
-Composite steel and concrete structure	Kết cấu liên hợp thép – bê tông cốt thép
-Composite steel and concrete structure	Kết cấu liên hợp thép – bê tông cốt thép
+Composite steel and concrete structure	Kết cấu liên hợp thép – bê tông cốt thép, Kết cấu liên hợp thép – bê tông cốt thép
 compound beam	dầm hỗn hợp
 compound girder	dầm ghép
 comprehensive test	sự thử toàn diện
 Compremed concrete zone	Vùng bê tông chịu nén
-Compression reinforcement	Cốt thép chịu nén
-compression reinforcement	cốt (thép); cốt, sườn
+Compression reinforcement	Cốt thép chịu nén, cốt (thép); cốt, sườn
 compressive load	tải trọng nén
 Compressive strength	Ứng suất chịu nén
 concentrated load	tải trọng tập trung
@@ -287,8 +284,7 @@ Coupler (coupling)	Mối nối cáp dự ứng lực Kéo sau
 Coupleur	Bộ nối các đoạn cáp dự ứng lực kéo sau
 cover ( boards) for the staircase	Tấm che lồng cầu thang
 Cover plate	Bản thép phủ (ở phần bản cánh dầm thép )
-Cover-meter, Rebar locator	Máy đo lớp bê tông bảo hộ cốt thép
-Cover-meter, Rebar locator	Máy đo lớp bê tông bảo hộ cốt thép
+Cover-meter, Rebar locator	Máy đo lớp bê tông bảo hộ cốt thép, Máy đo lớp bê tông bảo hộ cốt thép
 Cover-plate	Bản nối ốp, bản má
 crane beam	dầm cần trục
 crane girder	giá cần trục; giàn cần trục
@@ -330,8 +326,7 @@ definitions	Các định nghĩa
 deflection test	sự thử uốn
 deformation test	sự thử biến dạng
 Deformed bar, deformed reinforcement	Cốt thép có gờ (cốt thép gai)
-Deformed reinforcement	Cốt thép có độ dính bám cao (có gờ)
-Deformed reinforcement	Cốt thép có độ dính bám cao (có gờ)
+Deformed reinforcement	Cốt thép có độ dính bám cao (có gờ), Cốt thép có độ dính bám cao (có gờ)
 Degign action effect	hiệu quả hoạt động thiết kế
 Delegation	Đại diện
 demand load	tải trọng yêu cầu
@@ -420,8 +415,7 @@ fender beam	dầm chắn
 fibrous concrete	bê tông sợi
 fictitious load	tải trọng ảo
 Field connection	Mối nối ở hiện trường
-Field connection use high strength bolt	Mối nối ở hiện trường bằng bu lông cường độ cao
-Field connection use high strength bolt	Mối nối ở hiện trường bằng bu lông cường độ cao
+Field connection use high strength bolt	Mối nối ở hiện trường bằng bu lông cường độ cao, Mối nối ở hiện trường bằng bu lông cường độ cao
 field test	sự thử ở hiện trường
 Final account	Quyết toán
 fine concrete	bê tông mịn
@@ -466,8 +460,7 @@ free beam	dầm tự do
 free-bend test	sự thử uốn tự do
 free-fall test	sự thử rơi tự do
 freezing test	sự thử đông lạnh; sự thử tính chịu đông lạnh
-Fresh concrete	Bê tông tươi (mới trộn xong)
-fresh concrete	bê tông mới đổ
+Fresh concrete	Bê tông tươi (mới trộn xong), bê tông mới đổ
 friability test	sự thử độ giòn
 Frictional strength	Độ bền ma sát
 front beam	dầm trước
@@ -529,8 +522,7 @@ helical reinforcement	cốt (thép) xoắn
 high beam	đèn rọi xa, chùm sáng rọi xa
 high slump concrete	bê tông chảy
 High strength concrete	Bê tông cường độ cao
-High strength steel	Thép cường độ cao
-High strength steel	Thép cường độ cao
+High strength steel	Thép cường độ cao, Thép cường độ cao
 High tech work technique	Công trình kỹ thuật cao
 high tensile steel	thép cường độ cao
 high yield steel	thép đàn hồi cao
@@ -584,8 +576,7 @@ instantaneous load	tải trọng tức thời
 insulating concrete	bê tông cách nhiệt
 Insurance	Bảo hiểm
 intermittent load	tải trọng gián đoạn
-Internal prestressed concrete	Bê tông cốt thép dự ứng lực trong
-Internal prestressed concrete	Bê tông cốt thép dự ứng lực trong
+Internal prestressed concrete	Bê tông cốt thép dự ứng lực trong, Bê tông cốt thép dự ứng lực trong
 Internal vibrator	Đầm trong (vùi vào hỗn hợp bê tông)
 Interpretation	Diễn giải
 intrinsic fatigue-limit test	sự thử giới hạn mỏi nội tại
@@ -655,13 +646,11 @@ long-duration test	sự thử dài hạn, sự thử thời gian sử du�
 long-run test	sự thử vận hành dài hạn, sự thử vận hành lâu, sự thử làm việc lâu
 longitudinal beam	dầm dọc, xà dọc
 longitudinal girder	dầm dọc, xà dọc
-Longitudinal reinforcement	Cốt thép dọc
-longitudinal reinforcement	cốt (thép) dọc
+Longitudinal reinforcement	Cốt thép dọc, cốt (thép) dọc
 loosely spread concrete	bê tông chưa đầm, bê tông đổ dối
 Loss due to concrete instant deformation due to non-simultaneous prestressing of several strands	Mất mát dự ứng suất do biến dạng tức thời của bê tông khi Kéo căng các cáp
 Loss due to concrete shrinkage	Mất mát do co ngót bê tông
-Lost due to relaxation of prestressing steel	Mất mát do từ biến bê tông
-Lost due to relaxation of prestressing steel	Mất mát do tự chùng cốt thép dự ứng lực
+Lost due to relaxation of prestressing steel	Mất mát do từ biến bê tông, Mất mát do tự chùng cốt thép dự ứng lực
 Low alloy steel	Thép hợp kim thấp
 Low relaxation steel	Thép có độ tự chùng rất thấp
 low slump concrete	vữa bê tông có độ sụt hình nón thấp, vữa bê tông khô
@@ -696,8 +685,7 @@ mixer operator	công nhân đứng máy trộn vữa bê tông
 mixing drum	Trống trộn bê tông
 mobile load	tải trọng di động
 model test	sự thử trên mô hình
-Modular ratio	Tỷ số của các mô dun đàn hồi thép-bê tông
-Modular ratio	Tỷ số của các mô dun đàn hồi thép-bê tông
+Modular ratio	Tỷ số của các mô dun đàn hồi thép-bê tông, Tỷ số của các mô dun đàn hồi thép-bê tông
 Modulus of Elasticity	Môđun đàn hồi
 momentary load	tải trọng trong thời gian ngắn, tải trọng tạm thời
 monitoring test	sự thử kiểm tra
@@ -811,16 +799,14 @@ Posttensioning (apres betonage)	Phương pháp Kéo căng sau khi đổ bê t
 pre-operational test	sự thử trước vận hành
 pre-production test	sự thử trước sản xuất, sự thử trước khi đưa vào sản xuất
 pre-stressed reinforcement	cốt (thép) ứng lực trước
-Precast concrete	Bê tông đúc sẵn
-precast concrete	bê tông đúc sẵn
+Precast concrete	Bê tông đúc sẵn, bê tông đúc sẵn
 Precast concrete pile	Cọc bê tông đúc sẵn
 Precasting Yard	Xưởng đúc sẵn kết cấu bê tông
 prefabricated concrete	bê tông đúc sẵn
 preliminary test	sự thử sơ bộ
 prepact concrete	bê tông đúc từng khối riêng
 pressure load	tải trọng nén
-Prestressed concrete	Bê tông cốt thép dự ứng lực
-prestressed concrete	bê tông ứng lực trước
+Prestressed concrete	Bê tông cốt thép dự ứng lực, bê tông ứng lực trước
 Prestressed concrete pile	Cọc bê tông cốt thép dự ứng lực
 prestressed girder	dầm dự ứng lực
 Prestressing bed	Bệ kéo căng cốt thép dự ứng lực
@@ -873,11 +859,8 @@ reception test	sự thử nghiểm thu
 Record drawings	Bản vẽ hoàn công (như as-built drawings)
 Reedle vibrator	Đầm dùi (để đầm bê tông)
 refractory concrete	bê tông chịu nhiệt
-Reinforced concrete	Bê tông cốt thép thường
-reinforced concrete	bê tông cốt thép
-Reinforced concrete beam	Dầm bê tông cốt thép
-Reinforced concrete beam	Dầm bê tông cốt thép
-reinforced concrete beam	dầm bê tông cốt thép
+Reinforced concrete	Bê tông cốt thép thường, bê tông cốt thép
+Reinforced concrete beam	Dầm bê tông cốt thép, Dầm bê tông cốt thép, dầm bê tông cốt thép
 reinforced concrete lintel	Lanh tô bê tông cốt thép
 Reinforcement group	Nhóm cốt thép
 relaxation test	sự thí nghiệm tính chùng (của vật liệu)
@@ -950,8 +933,7 @@ shear load	lực cắt
 Shear reinforcement	Cốt thép chịu cắt
 Shearing strength	Độ bền trượt
 shearing test	sự thử bằng cách cắt
-Sheet pile	Cọc ván, cọc ván thép
-Sheet pile	Cọc ván, cọc ván thép
+Sheet pile	Cọc ván, cọc ván thép, Cọc ván, cọc ván thép
 shock load	tải trọng va chạm
 shock test	sự thử va đập
 short-circuit test	sự thử ngắn mạch
@@ -1017,10 +999,8 @@ steel	thép
 steel concrete	bê tông cốt thép
 Steel elongation	Độ dãn dài của cốt thép
 Steel H pile	Cọc thép hình H
-Steel percentage	Hàm lượng thép trong bê tông cốt thép
-Steel percentage	Hàm lượng thép trong bê tông cốt thép
-Steel pipe filled with	ống thép nhồi bê tông
-Steel pipe filled with	ống thép nhồi bê tông
+Steel percentage	Hàm lượng thép trong bê tông cốt thép, Hàm lượng thép trong bê tông cốt thép
+Steel pipe filled with	ống thép nhồi bê tông, ống thép nhồi bê tông
 Steel pipe pile, tubular steel pile	Cọc ống thép
 Steel stress at jacking end	ứng suất thép ở đầu kích Kéo căng
 Steel with particular properties	Thép có tính chất đặc biệt
@@ -1044,8 +1024,7 @@ structural section	thép hình xây dựng
 Structural steel	Thép kết cấu
 structural test	sự thử cấu trúc
 strutting beam	dầm ngang, xà ngang; thanh giằng (vì kèo)
-Stud shear connector	Neo kiểu đinh (của dầm thép liên hợp bê tông)
-Stud shear connector	Neo kiểu đinh (của dầm thép liên hợp bê tông)
+Stud shear connector	Neo kiểu đinh (của dầm thép liên hợp bê tông), Neo kiểu đinh (của dầm thép liên hợp bê tông)
 Subcontracting	Thầu phụ
 Subcontractor	Nhà thầu phụ
 Successive	Nối tiếp nhau
@@ -1078,8 +1057,7 @@ tensile load	tải trọng kéo đứt
 Tensile strength	Giới hạn bền kéo
 Tensile strength at days age	Cường độ chịu kéo của bê tông ở ngày
 tensile test	sự thử sức căng; sự thử kéo
-Tension reinforcement	Cốt thép chịu kéo
-tension reinforcement	cốt (thép) chịu kéo
+Tension reinforcement	Cốt thép chịu kéo, cốt (thép) chịu kéo
 tension test	sự thử sức căng; sự thử kéo
 Tension zone in concrete	Khu vực chịu Kéo của bê tông
 Tensioning (tensioning operation)	Công tác kéo căng cốt thép
@@ -1143,8 +1121,7 @@ Ultimate strength	Giới hạn bền
 ultrasonic test	sự thử bằng siêu âm
 Un*****ed concrete section	Mặt cắt bê tông chưa bị nứt
 unbalanced load	tải trọng không cân bằng
-Unbonded tendon	Cốt thép dự ứng lực không dính bám với bê tông
-Unbonded tendon	Cốt thép dự ứng lực không dính bám với bê tông
+Unbonded tendon	Cốt thép dự ứng lực không dính bám với bê tông, Cốt thép dự ứng lực không dính bám với bê tông
 Uncorrected defects	Các sai sót không được sửa chữa
 Unfilled tubular steel pile	Cọc ống thép không lấp lòng
 uniform beam	dầm tiết diện không đổi, dầm (có) mặt cắt đều
@@ -1161,9 +1138,7 @@ variable load	tải trọng biến đổi
 Variations	Các thay đổi ( Chủ đầu tư yêu cầu Nhà thầu thực hiện một công việc nào đó khác đi so với hợp đồng ban đầu)
 varying load	tải trọng biến đổi
 Vertical clearance	Chiều cao tịnh không
-Vertical-tie	Neo dạng thanh thẳng đứng để nối phần bê tông cốt thép khác nhau
-Vertical-tie	Neo dạng thanh thẳng đứng để nối phần bê tông cốt thép khác nhau
-Vertical-tie	Neo dạng thanh thẳng đứng để nối phần bê tông cốt thép khác nhau
+Vertical-tie	Neo dạng thanh thẳng đứng để nối phần bê tông cốt thép khác nhau, Neo dạng thanh thẳng đứng để nối phần bê tông cốt thép khác nhau, Neo dạng thanh thẳng đứng để nối phần bê tông cốt thép khác nhau
 Viaduct	Cầu có trụ cao
 vibrated concrete	bê tông đầm rung
 vibration test	sự thử độ rung
