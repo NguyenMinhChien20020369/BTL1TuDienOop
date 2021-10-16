@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class DictionaryManagement {
 
-  protected Dictionary dictionary = new Dictionary();
+  protected static Dictionary dictionary = new Dictionary();
 
   public static void insertFromCommandline(Dictionary myDictionary) {
     Scanner sc = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class DictionaryManagement {
   }
 
   //Present Vietnamese meaning of the word
-  public void dictionaryLookup() {
+  public static void dictionaryLookup() {
     Scanner scanner = new Scanner(System.in);
     String Target = scanner.nextLine();
     Word word = dictionary.lookup(Target);
@@ -40,10 +40,10 @@ public class DictionaryManagement {
     return dictionary.lookup(Target);
   }
 
-  public void dictionarySearcher() {
+  public static void dictionarySearcher(Dictionary myDictionary) {
     Scanner scanner = new Scanner(System.in);
     String Target = scanner.nextLine();
-    ArrayList<Word> words = dictionary.searcher(Target);
+    ArrayList<Word> words = myDictionary.searcher(Target);
     for (Word word : words) {
       System.out.print(word.getWord_target());
       System.out.println(" " + word.getWord_explain());
@@ -150,9 +150,11 @@ public class DictionaryManagement {
     myDictionary.getWordList().sort(new Comparator<Word>() {
       @Override
       public int compare(Word w1, Word w2) {
-        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase().charAt(0)) {
+        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase()
+            .charAt(0)) {
           return -1;
-        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase().charAt(0)) {
+        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase()
+            .charAt(0)) {
           return 1;
         }
         return w1.getWord_target().toLowerCase().compareTo(w2.getWord_target().toLowerCase());

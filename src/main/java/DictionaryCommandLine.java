@@ -19,7 +19,8 @@ public class DictionaryCommandLine {
 
   public static void dictionaryAdvanced(Dictionary myDictionary) {
     DictionaryManagement.insertFromFile(myDictionary);
-    showAllWords(myDictionary);
+    //showAllWords(myDictionary);
+    //DictionaryManagement.dictionaryLookup();
   }
 
   public static void main(String[] args) {
@@ -29,6 +30,7 @@ public class DictionaryCommandLine {
     /*DictionaryManagement.addWordsToDictionary(new Word("has", "là"), myDictionary);
     showAllWords(myDictionary);*/
     //System.out.println(myDictionary.lookup("dummy test").getWord_explain());
+    DictionaryManagement.dictionarySearcher(myDictionary);
     DictionaryManagement.dictionaryExportToFile(myDictionary);
   }
 }
