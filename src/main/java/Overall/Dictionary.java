@@ -14,28 +14,38 @@ public class Dictionary {
   public void push(Word word) {
     int length = wordList.size();
     int index = searchIndexInsert(0, length - 1, word.getWord_target());
-    if (index <= length && index >= 0) wordList.add(index, word);
+    if (index <= length && index >= 0) {
+      wordList.add(index, word);
+    }
   }
 
   private int searchIndexInsert(int start, int end, String Target) {
-    if (end < start) return start;
+    if (end < start) {
+      return start;
+    }
     int mid = start + (end - start) / 2;
-    if (mid == wordList.size()) return mid;
+    if (mid == wordList.size()) {
+      return mid;
+    }
     Word word = wordList.get(mid);
     int compare = word.getWord_explain().compareTo(Target);
-    if (compare == 0) return -1;
-    if (compare > 0) return searchIndexInsert(start, mid - 1, Target);
+    if (compare == 0) {
+      return -1;
+    }
+    if (compare > 0) {
+      return searchIndexInsert(start, mid - 1, Target);
+    }
     return searchIndexInsert(mid + 1, end, Target);
   }
 
-  public int searchWord(Dictionary dictionary, String word) {
+  public int searchWord(String word) {
     // System.out.println("Enter the word that you want:");
     //Scanner input = new Scanner(System.in);
     //String inputStr = input.nextLine();
     int i = 0;
     int keep = 0;
     boolean checkOccur = false;
-    for (Word a : dictionary.getWordList()) {
+    for (Word a : wordList) {
       if (a.getWord_target().equals(word)) {
         System.out.println("The word is:" + a.getWord_target());
         keep = i;
@@ -44,13 +54,16 @@ public class Dictionary {
       }
       i++;
     }
-    if (checkOccur == true) return keep;
-    else return dictionary.getWordList().size() - 1;
+    if (checkOccur == true) {
+      return keep;
+    } else {
+      return wordList.size() - 1;
+    }
   }
 
   public ArrayList<Word> advancedSearchWord(String inputStr, Dictionary dictionary) {
     Pattern pattern
-            = Pattern.compile(inputStr);
+        = Pattern.compile(inputStr);
     int i = 0;
     ArrayList<Word> keep = new ArrayList<Word>();
     for (Word a : dictionary.getWordList()) {
@@ -96,7 +109,6 @@ public class Dictionary {
 //    }
 
 
-
   private Word binaryLookup(int start, int end, String Target) {
     if (end < start) {
       return null;
@@ -120,9 +132,11 @@ public class Dictionary {
     }
   }
 
-//Find the index of the word in the dictionary
+  //Find the index of the word in the dictionary
   private int binarySearcher(int start, int end, String Target) {
-    if (end < start) return -1;
+    if (end < start) {
+      return -1;
+    }
     int mid = start + (end - start) / 2;
     Word word = wordList.get(mid);
     String currentTarget = word.getWord_target();
@@ -130,37 +144,44 @@ public class Dictionary {
       return mid;
     }
     int compare = currentTarget.compareTo(Target);
-    if (compare == 0) return -1;
-    if (compare > 0) return binarySearcher(start, mid - 1, Target);
+    if (compare == 0) {
+      return -1;
+    }
+    if (compare > 0) {
+      return binarySearcher(start, mid - 1, Target);
+    }
     return binarySearcher(mid + 1, end, Target);
   }
-//Return the finding word
+
+  //Return the finding word
   public Word lookup(String Target) {
     return binaryLookup(0, wordList.size() - 1, Target);
   }
 
-//Find simillar Target in the source
+  //Find simillar Target in the source
   public ArrayList<Word> searcher(String Target) {
     ArrayList<Word> result = new ArrayList<>();
-    int index =  binarySearcher(0, wordList.size() - 1, Target);
+    int index = binarySearcher(0, wordList.size() - 1, Target);
     if (index >= 0) {
       result.add(wordList.get(index));
       int left = index - 1, right = index + 1;
       while (left >= 0) {
         Word leftWord = wordList.get(left--);
-        if (leftWord.getWord_target().startsWith(Target))
+        if (leftWord.getWord_target().startsWith(Target)) {
           result.add(leftWord);
-        else
+        } else {
           break;
+        }
       }
 
       int length = wordList.size();
       while (right < length) {
         Word RightWord = wordList.get(right++);
-        if (RightWord.getWord_target().startsWith(Target))
+        if (RightWord.getWord_target().startsWith(Target)) {
           result.add(RightWord);
-        else
+        } else {
           break;
+        }
       }
     }
     return result;
@@ -178,5 +199,7 @@ public class Dictionary {
     return this.wordList;
   }
 
-  public void setWords(ArrayList<Word> words) { this.wordList = words; }
+  public void setWords(ArrayList<Word> words) {
+    this.wordList = words;
+  }
 }

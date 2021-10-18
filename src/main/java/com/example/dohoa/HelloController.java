@@ -1,60 +1,56 @@
 package com.example.dohoa;
+
+import Overall.DictionaryManagement;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import Overall.DictionaryManagement;
 import Overall.Dictionary;
-import Overall.ReadFileWithBufferedReader;
-import Overall.Word;
-import Overall.DictionaryPractice;
-import Overall.HistorySearching;
 import Overall.DictionaryCommandLine;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 import static Overall.DictionaryManagement.sortDictionary;
 
-public class HelloController   {
-//    @FXML
+public class HelloController {
+
+  //    @FXML
 //    private Label welcomeText;
-    @FXML
-    private TextField txt;
-    @FXML
-    private TextArea textarea;
-    @FXML
-    private Button btn;
+  @FXML
+  private TextField txt;
+  @FXML
+  private TextArea textarea;
+  @FXML
+  private Button btn;
 
-  public void initialize(URL url, ResourceBundle rb)
-    {
+  public void initialize(URL url, ResourceBundle rb) {
 
-     }
-//
-    @FXML
-    public void doSearch() {
-        System.out.println("Here we are ");
-        String word = txt.getText();
-        Scanner sc = new Scanner(System.in);
-        Dictionary myDictionary = new Dictionary();
-        DictionaryCommandLine dtr = new DictionaryCommandLine();
-        dtr.dictionaryAdvanced(myDictionary);
-        sortDictionary(myDictionary);
+  }
 
-        int expl = myDictionary.searchWord(myDictionary,word);
+  //
+  @FXML
+  public void doSearch() {
+    System.out.println("Here we are ");
+    String word = txt.getText();
+    Dictionary myDictionary = new Dictionary();
+    DictionaryCommandLine dtr = new DictionaryCommandLine();
+    dtr.dictionaryAdvanced(myDictionary);
+    sortDictionary(myDictionary);
 
-        String a = myDictionary.lookup(word).getWord_explain();
-        if(a.equalsIgnoreCase("erro")) textarea.setText("something wrong");
-        textarea.setText(a);
+    int expl = myDictionary.searchWord(word);
+
+    String a = myDictionary.lookup(word).getWord_explain();
+    if (a.equalsIgnoreCase("erro")) {
+      textarea.setText("something wrong");
+    } else {
+      textarea.setText(a);
     }
+  }
+
+  @FXML
+  public void doAPI() {
+    textarea.setText(DictionaryManagement.API(txt.getText()));
+  }
 
 //    public static class InternetConnection {
 //        public String getOnlineData(String word)

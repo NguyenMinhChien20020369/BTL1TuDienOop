@@ -3,13 +3,16 @@ package Overall;
 import Overall.Dictionary;
 import Overall.DictionaryCommandLine;
 
+import com.darkprograms.speech.translator.GoogleTranslate;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
 public class DictionaryManagement {
+
   protected static Dictionary dictionary = new Dictionary();
+
   public static void insertFromCommandline(Dictionary myDictionary) {
     Scanner sc = new Scanner(System.in);
     int numberOfWords = sc.nextInt();
@@ -25,7 +28,8 @@ public class DictionaryManagement {
       myDictionary.addWord(tempWord);
     }
   }
-//Present Vietnamese meaning of the word
+
+  //Present Vietnamese meaning of the word
   public void dictionaryLookup() {
     Scanner scanner = new Scanner(System.in);
     String Target = scanner.nextLine();
@@ -49,7 +53,9 @@ public class DictionaryManagement {
 
   //Return result with arraylist contained words with similar prefix.
   public ArrayList<Word> dictionarySearcher(String searchText) {
-    if (searchText.equals("")) return new ArrayList<>();
+    if (searchText.equals("")) {
+      return new ArrayList<>();
+    }
     return dictionary.searcher(searchText);
   }
 
@@ -66,6 +72,7 @@ public class DictionaryManagement {
     wordsToDel = DictionaryCommandLine.dictionarySearcher(wordsToDel, myDictionary);
     myDictionary.getWordList().remove(wordsToDel);
   }
+
   public void saveWordsToFile() throws IOException {
     ReadFileWithBufferedReader read = new ReadFileWithBufferedReader();
     read.write(dictionary.getWordList(), "data/dictionaries.txt");
@@ -75,6 +82,7 @@ public class DictionaryManagement {
     dictionary.push(word);
     this.saveWordsToFile();
   }
+
   public static void editWordsInTheDictionary(Word correctedWord, Dictionary myDictionary) {
     Word oldWord = myDictionary.lookup(correctedWord.getWord_target());
     oldWord.setWord_explain(correctedWord.getWord_explain());
@@ -83,13 +91,16 @@ public class DictionaryManagement {
   public static void deleteWordFromDictionary(String target, Dictionary myDictionary) {
     myDictionary.getWordList().remove(myDictionary.lookup(target));
   }
+
   public void dictionaryExportToFile() throws IOException {
     ReadFileWithBufferedReader read = new ReadFileWithBufferedReader();
     read.write(dictionary.getWordList());
   }
+
   public static void dictionaryExportToFile(Dictionary myDictionary) {
     try {
-      File f = new File("C:\\GitHub\\BTL1TuDienOop\\src\\main\\resources\\Data\\lingoes\\save_dictionaries.txt");
+      File f = new File(
+          "D:\\chuanMuc\\BTL1TuDienOop\\src\\main\\resources\\Data\\lingoes\\save_dictionaries.txt");
       FileWriter fw = new FileWriter(f);
       for (int i = 0; i < myDictionary.getWordList().size(); i++) {
         fw.write(myDictionary.getWordList().get(i).getWord_target() + '\t');
@@ -100,6 +111,7 @@ public class DictionaryManagement {
       System.out.println("File write error: " + ex);
     }
   }
+
   public static void addWordsToDictionary(Word wordsToAdd, Dictionary myDictionary) {
     //myDictionary.getWordList().add(wordsToAdd);
     Word lookedUpWord = myDictionary.lookup(wordsToAdd.getWord_target());
@@ -113,9 +125,9 @@ public class DictionaryManagement {
         tempWord_explain = "";
       }
       if (lookedUpWord.getWord_explain().charAt(i) != ','
-              && lookedUpWord.getWord_explain().charAt(i) != ';') {
+          && lookedUpWord.getWord_explain().charAt(i) != ';') {
         tempWord_explain = tempWord_explain.concat(
-                Character.toString(lookedUpWord.getWord_explain().charAt(i)));
+            Character.toString(lookedUpWord.getWord_explain().charAt(i)));
         if (i == lookedUpWord.getWord_explain().length() - 1) {
           tempWord_explain = tempWord_explain.trim();
           if (tempWord_explain.equals(wordsToAdd.getWord_explain())) {
@@ -130,11 +142,13 @@ public class DictionaryManagement {
       }
     }
     lookedUpWord.setWord_explain(
-            lookedUpWord.getWord_explain() + ", " + wordsToAdd.getWord_explain());
+        lookedUpWord.getWord_explain() + ", " + wordsToAdd.getWord_explain());
   }
+
   public static void insertFromFile(Dictionary myDictionary) {
     try {
-      File f = new File("C:\\GitHub\\BTL1TuDienOop\\src\\main\\resources\\Data\\lingoes\\E_V.txt");
+      File f = new File(
+          "D:\\chuanMuc\\BTL1TuDienOop\\src\\main\\resources\\Data\\lingoes\\E_V.txt");
       FileReader fr = new FileReader(f);
       BufferedReader br = new BufferedReader(fr);
       String line;
@@ -161,17 +175,30 @@ public class DictionaryManagement {
       System.out.println("File read error: " + ex);
     }
   }
+
   public static void sortDictionary(Dictionary myDictionary) {
     myDictionary.getWordList().sort(new Comparator<Word>() {
       @Override
       public int compare(Word w1, Word w2) {
-        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase().charAt(0)) {
+        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase()
+            .charAt(0)) {
           return -1;
-        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase().charAt(0)) {
+        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase()
+            .charAt(0)) {
           return 1;
         }
         return w1.getWord_target().toLowerCase().compareTo(w2.getWord_target().toLowerCase());
       }
     });
+  }
+
+  public static String API(String text) {
+    String word = "";
+    try {
+      word = GoogleTranslate.translate("vi", text);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return word;
   }
 }
