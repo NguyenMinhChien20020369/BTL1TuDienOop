@@ -17,7 +17,7 @@ public class HelloController {
   //    @FXML
 //    private Label welcomeText;
   @FXML
-  private TextField txt;
+  private TextArea txt;
   @FXML
   private TextArea textarea;
   @FXML
@@ -46,10 +46,12 @@ public class HelloController {
       textarea.setText(a);
     }
   }
-
+  
   @FXML
   public void doAPI() {
-    textarea.setText(DictionaryManagement.API(txt.getText()));
+    String word = DictionaryManagement.API(txt.getText());
+    System.out.println(word);
+    textarea.setText(word);
   }
 
 //    public static class InternetConnection {

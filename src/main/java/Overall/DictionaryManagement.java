@@ -193,9 +193,20 @@ public class DictionaryManagement {
   }
 
   public static String API(String text) {
+    String[] txt = text.split("\\n");
     String word = "";
     try {
-      word = GoogleTranslate.translate("vi", text);
+      for (String i : txt) {
+        if (i == "") {
+          word += "\n";
+          continue;
+        }
+        String[] words = i.split(" ");
+        for (String j : words) {
+          word += GoogleTranslate.translate("en","vi", j) + " ";
+        }
+        word += "\n";
+      }
     } catch (IOException e) {
       e.printStackTrace();
     }
