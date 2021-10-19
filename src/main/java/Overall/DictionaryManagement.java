@@ -5,8 +5,10 @@ import Overall.DictionaryCommandLine;
 
 import com.darkprograms.speech.translator.GoogleTranslate;
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -197,13 +199,13 @@ public class DictionaryManagement {
     String word = "";
     try {
       for (String i : txt) {
-        if (i == "") {
+        if (Objects.equals(i, "")) {
           word += "\n";
           continue;
         }
-        String[] words = i.split(" ");
+        String[] words = i.split("\\.");
         for (String j : words) {
-          word += GoogleTranslate.translate("en","vi", j) + " ";
+          word += GoogleTranslate.translate("en","vi", j) + ". ";
         }
         word += "\n";
       }
