@@ -183,11 +183,19 @@ public class DictionaryManagement {
     myDictionary.getWordList().sort(new Comparator<Word>() {
       @Override
       public int compare(Word w1, Word w2) {
-        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase()
-            .charAt(0)) {
+        int index1 = 0;
+        int index2 = 0;
+        if (w1.getWord_target().charAt(0) == '-') {
+          index1++;
+        }
+        if (w2.getWord_target().charAt(0) == '-') {
+          index2++;
+        }
+        if (w1.getWord_target().toLowerCase().charAt(index1) < w2.getWord_target().toLowerCase()
+            .charAt(index2)) {
           return -1;
-        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase()
-            .charAt(0)) {
+        } else if (w1.getWord_target().toLowerCase().charAt(index1) > w2.getWord_target().toLowerCase()
+            .charAt(index2)) {
           return 1;
         }
         return w1.getWord_target().toLowerCase().compareTo(w2.getWord_target().toLowerCase());

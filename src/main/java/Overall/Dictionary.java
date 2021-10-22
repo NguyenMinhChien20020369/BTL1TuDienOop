@@ -139,9 +139,17 @@ public class Dictionary {
     int mid = start + (end - start) / 2;
     Word word = wordList.get(mid);
     String currentTarget = word.getWord_target();
-    if (currentTarget.toLowerCase().charAt(0) < Target.toLowerCase().charAt(0)) {
+    int index1 = 0;
+    int index2 = 0;
+    if (currentTarget.charAt(0) == '-') {
+      index1++;
+    }
+    if (Target.charAt(0) == '-') {
+      index2++;
+    }
+    if (currentTarget.toLowerCase().charAt(index1) < Target.toLowerCase().charAt(index2)) {
       return binaryLookup(mid + 1, end, Target);
-    } else if (currentTarget.toLowerCase().charAt(0) > Target.toLowerCase().charAt(0)) {
+    } else if (currentTarget.toLowerCase().charAt(index1) > Target.toLowerCase().charAt(index2)) {
       return binaryLookup(start, mid - 1, Target);
     } else {
       int compare = currentTarget.toLowerCase().compareTo(Target.toLowerCase());
