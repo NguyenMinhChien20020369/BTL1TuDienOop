@@ -99,8 +99,8 @@ public class HelloController {
     dt.setWords(rd.read());
     textarea.setEditable(false);
     list_word.getChildren().clear();
-    if(!textField.getText().isEmpty()) {
-      String inputStr = textField.getText();
+    if(!txt.getText().isEmpty()) {
+      String inputStr = txt.getText();
       ArrayList<Word> displayWord = dt.advancedSearchWord(inputStr);
       System.out.println(displayWord.size());
       for (Word a : displayWord) {
@@ -120,12 +120,12 @@ public class HelloController {
     }
   }
 
-//  @FXML
-//  public void doAPI() {
-//    String word = DictionaryManagement.API(txt.getText());
-//    System.out.println(word);
-//    textarea.setText(word);
-//  }
+  @FXML
+  public void doAPI() {
+    String word = DictionaryManagement.API(txt.getText());
+    System.out.println(word);
+    textarea.setText(word);
+  }
 
 //    public static class InternetConnection {
 //        public String getOnlineData(String word)
