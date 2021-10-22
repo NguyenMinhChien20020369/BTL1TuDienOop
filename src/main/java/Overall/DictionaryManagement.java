@@ -3,7 +3,7 @@ package Overall;
 import Overall.Dictionary;
 import Overall.DictionaryCommandLine;
 
-import com.darkprograms.speech.translator.GoogleTranslate;
+//import com.darkprograms.speech.translator.GoogleTranslate;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -194,24 +194,24 @@ public class DictionaryManagement {
     });
   }
 
-  public static String API(String text) {
-    String[] txt = text.split("\\n");
-    String word = "";
-    try {
-      for (String i : txt) {
-        if (Objects.equals(i, "")) {
-          word += "\n";
-          continue;
-        }
-        String[] words = i.split("\\.");
-        for (String j : words) {
-          word += GoogleTranslate.translate("en","vi", j) + ". ";
-        }
-        word += "\n";
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return word;
-  }
+//  public static String API(String text) {
+//    String[] txt = text.split("\\n");
+//    String word = "";
+//    try {
+//      for (String i : txt) {
+//        if (Objects.equals(i, "")) {
+//          word += "\n";
+//          continue;
+//        }
+//        String[] words = i.split("\\.");
+//        for (String j : words) {
+//         // word += GoogleTranslate.translate("en","vi", j) + ". ";
+//        }
+//        word += "\n";
+//      }
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+//    return word;
+//  }
 }

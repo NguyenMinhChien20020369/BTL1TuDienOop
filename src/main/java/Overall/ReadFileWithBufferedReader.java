@@ -7,11 +7,12 @@ import java.util.logging.Logger;
 
 public class ReadFileWithBufferedReader {
     public ArrayList<Word> read() {
-        return this.read("C:\\GitHub\\BTL1TuDienOop\\src\\main\\resources\\Data\\lingoes\\E_V.txt");
+        return this.ReadJsonFile("C:\\GitHub\\BTL1TuDienOop\\src\\main\\resources\\Data\\lingoes\\emps.json");
     }
 
-    public static ArrayList<Word> read(String path) {
+    public  ArrayList<Word> ReadJsonFile(String path) {
         String line = null;
+        JSONDecoder JSD = new JSONDecoder();
        // String[] words;
         ArrayList<Word> result = new ArrayList<>();
         FileInputStream Path = null;
@@ -21,6 +22,58 @@ public class ReadFileWithBufferedReader {
             Path = new FileInputStream(path);
             inputStreamReader = new InputStreamReader(Path, "UTF8");
              br = new BufferedReader(inputStreamReader);
+             line = br.readLine();
+            result = JSD.Decoder(line);
+//            while ((line = br.readLine()) != null) {
+//                String tempWord_target = "";
+//                String tempWord_explain = "";
+//                boolean takeExplain = false;
+//                for (int i = 0; i < line.length(); i++) {
+//                    if (takeExplain) {
+//                        tempWord_explain = tempWord_explain.concat(Character.toString(line.charAt(i)));
+//                        continue;
+//                    }
+//                    if (line.charAt(i) != '\t') {
+//                        tempWord_target = tempWord_target.concat(Character.toString(line.charAt(i)));
+//                    } else {
+//                        takeExplain = true;
+//                    }
+//                }
+//                result.add(new Word(tempWord_target,tempWord_explain));
+//            }
+        }   catch (FileNotFoundException ex) {
+                Logger.getLogger(ReadFileWithBufferedReader.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ReadFileWithBufferedReader.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    Path.close();
+                    br.close();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(ReadFileWithBufferedReader.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+            }
+        return result;
+    }
+
+    public static ArrayList<Word> read(String path) {
+        String line = null;
+        JSONDecoder JSD = new JSONDecoder();
+        // String[] words;
+        ArrayList<Word> result = new ArrayList<>();
+        FileInputStream Path = null;
+        BufferedReader br = null;
+        InputStreamReader inputStreamReader = null;
+        try {
+            Path = new FileInputStream(path);
+            inputStreamReader = new InputStreamReader(Path, "UTF8");
+            br = new BufferedReader(inputStreamReader);
+            line = br.readLine();
+            result = JSD.Decoder(line);
             while ((line = br.readLine()) != null) {
                 String tempWord_target = "";
                 String tempWord_explain = "";
@@ -39,21 +92,21 @@ public class ReadFileWithBufferedReader {
                 result.add(new Word(tempWord_target,tempWord_explain));
             }
         }   catch (FileNotFoundException ex) {
-                Logger.getLogger(ReadFileWithBufferedReader.class.getName())
-                        .log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReadFileWithBufferedReader.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ReadFileWithBufferedReader.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                Path.close();
+                br.close();
+
             } catch (IOException ex) {
                 Logger.getLogger(ReadFileWithBufferedReader.class.getName())
                         .log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    Path.close();
-                    br.close();
-
-                } catch (IOException ex) {
-                    Logger.getLogger(ReadFileWithBufferedReader.class.getName())
-                            .log(Level.SEVERE, null, ex);
-                }
             }
+        }
         return result;
     }
 

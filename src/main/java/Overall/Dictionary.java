@@ -38,7 +38,7 @@ public class Dictionary {
     return searchIndexInsert(mid + 1, end, Target);
   }
 
-  public int searchWord(String word) {
+  public int searchword(String word) {
     // System.out.println("Enter the word that you want:");
     //Scanner input = new Scanner(System.in);
     //String inputStr = input.nextLine();
@@ -60,22 +60,45 @@ public class Dictionary {
       return wordList.size() - 1;
     }
   }
-
-  public ArrayList<Word> advancedSearchWord(String inputStr, Dictionary dictionary) {
-    Pattern pattern
-        = Pattern.compile(inputStr);
-    int i = 0;
-    ArrayList<Word> keep = new ArrayList<Word>();
-    for (Word a : dictionary.getWordList()) {
-      Matcher matcher = pattern.matcher(a.getWord_target());
-      if (matcher.find() == true && inputStr.charAt(0) == a.getWord_target().charAt(0)) {
-        System.out.println("The word is:" + a.getWord_target());
-        keep.add(a);
+  public Word searchWord(String inputStr){
+    Word word  = new Word();
+    for (Word a: this.getWordList()){
+      if (a.getWord_target().equals(inputStr)) {
+        System.out.println(a.getWord_target());
+        word = a;
       }
-      i++;
+    }
+    return word;
+  }
+  public ArrayList<Word> advancedSearchWord(String inputStr) throws  NullPointerException{
+    Pattern pattern
+            = Pattern.compile(inputStr);
+    ArrayList<Word> keep= new ArrayList<>();
+    int i =0;
+
+    for (Word a: this.getWordList()){
+      if (a.getWord_target() ==null){
+        System.out.println("There is null word");
+      }
+      Matcher matcher= pattern.matcher(a.getWord_target());
+      if (i<10) {
+        if (a.getWord_target().length() >= inputStr.length()) {
+          String dub = a.getWord_target().substring(0, inputStr.length());
+          if (matcher.find() == true && inputStr.equals(dub)) {
+//                        System.out.println(a.getWord_target());
+            keep.add(a);
+            i++;
+          }
+        }
+      }
+      else if (i==20) {
+        System.out.println("Out of range!");
+        break;
+      }
     }
     return keep;
   }
+
 //Find the word in the dictionary
 //  public Word binaryLookup(int start, int end, String Target) {
 //    if (end < start) {

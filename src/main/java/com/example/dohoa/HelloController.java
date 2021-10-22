@@ -1,13 +1,16 @@
 package com.example.dohoa;
 
-import Overall.DictionaryManagement;
+import Overall.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import Overall.Dictionary;
-import Overall.DictionaryCommandLine;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static Overall.DictionaryManagement.sortDictionary;
@@ -22,37 +25,107 @@ public class HelloController {
   private TextArea textarea;
   @FXML
   private Button btn;
+  @FXML
+  private VBox list_word;
+  @FXML
+  private ScrollPane scrollPane1;
+
+  @FXML
+  private TextField textField;
+  @FXML
+  private Label wordLabel;
 
   public void initialize(URL url, ResourceBundle rb) {
 
   }
-
+  Dictionary dt = new Dictionary();
+  ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
   //
-  @FXML
-  public void doSearch() {
-    System.out.println("Here we are ");
-    String word = txt.getText();
-    Dictionary myDictionary = new Dictionary();
-    DictionaryCommandLine dtr = new DictionaryCommandLine();
-    dtr.dictionaryAdvanced(myDictionary);
-    sortDictionary(myDictionary);
+//  @FXML
+//  public void doSearch() {
+//    System.out.println("Here we are ");
+//    String word = txt.getText();
+//    Dictionary myDictionary = new Dictionary();
+//    DictionaryCommandLine dtr = new DictionaryCommandLine();
+//    dtr.dictionaryAdvanced(myDictionary);
+//    sortDictionary(myDictionary);
+//
+//    int expl = myDictionary.searchWord(word);
+//
+//    String a = myDictionary.lookup(word).getWord_explain();
+//    if (a.equalsIgnoreCase("erro")) {
+//      textarea.setText("something wrong");
+//    } else {
+//      textarea.setText(a);
+//    }
+//  }
 
-    int expl = myDictionary.searchWord(word);
+//  public void initialize(URL url, ResourceBundle resourceBundle) {
+//    try {
+//      dictionaryManagement.insertFromFileJSON();
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+//    textarea.setEditable(false);
+//  }
 
-    String a = myDictionary.lookup(word).getWord_explain();
-    if (a.equalsIgnoreCase("erro")) {
-      textarea.setText("something wrong");
-    } else {
-      textarea.setText(a);
+  public void doSearch(String inputStr){
+    Word word = dt.searchWord(inputStr);
+//        System.out.println(word.getWord_target());
+    String wordStr = "";
+    for (String a: word.getMeaning().keySet()){
+      if (!a.equals("noType") && !a.equals("noEx"))   wordStr+=a+"\n\n";
+      for (Description b : word.getMeaning().get(a)){
+        wordStr+= b.getDefinition()+"\n";
+        for (String c: b.getExample()){
+          wordStr+=c+"\n";
+        }
+      }
+    }
+    textarea.setText(wordStr);
+    wordLabel.setText(word.getWord_target());
+//    wordLabel.setFont(Font.font(24));
+//    wordLabel.setTextFill(Color.BLUE);
+  }
+  void addClickListener(Label label){
+    label.setOnMouseClicked(mouseEvent -> {
+      String labelStr = label.getText();
+      System.out.println(labelStr);
+      doSearch(labelStr);
+    });
+  }
+
+  public void displayWord(){
+    dt.setWords(rd.read());
+    textarea.setEditable(false);
+    list_word.getChildren().clear();
+    if(!textField.getText().isEmpty()) {
+      String inputStr = textField.getText();
+      ArrayList<Word> displayWord = dt.advancedSearchWord(inputStr);
+      System.out.println(displayWord.size());
+      for (Word a : displayWord) {
+        Label word = new Label(a.getWord_target());
+        addClickListener(word);
+        //word.setMinWidth(270);
+        //word.setMinHeight(45);
+        //word.setStyle("-fx-background-color: #E1E1E1");
+        //word.setStyle("-fx-text-alignment: left");
+        //word.setPadding(new Insets(0, 0, 10, 5));
+        //word.setBorder(new Border(new BorderStroke(Color.AQUAMARINE, BorderStrokeStyle.SOLID, new CornerRadii(1.0), BorderStroke.THICK)));
+        list_word.getChildren().add(word);
+        //scrollPane1.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        //scrollPane1.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+      }
+      scrollPane1.setContent(list_word);
     }
   }
-  
-  @FXML
-  public void doAPI() {
-    String word = DictionaryManagement.API(txt.getText());
-    System.out.println(word);
-    textarea.setText(word);
-  }
+
+//  @FXML
+//  public void doAPI() {
+//    String word = DictionaryManagement.API(txt.getText());
+//    System.out.println(word);
+//    textarea.setText(word);
+//  }
 
 //    public static class InternetConnection {
 //        public String getOnlineData(String word)
