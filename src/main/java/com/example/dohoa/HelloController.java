@@ -3,6 +3,8 @@ package com.example.dohoa;
 import Overall.*;
 import java.util.Objects;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -16,7 +18,7 @@ import java.util.ResourceBundle;
 
 import static Overall.DictionaryManagement.sortDictionary;
 
-public class HelloController {
+public class HelloController implements Initializable {
 
   //    @FXML
 //    private Label welcomeText;
@@ -33,19 +35,22 @@ public class HelloController {
   @FXML
   private Label wordLabel;
   @FXML
-  private TextField taget;
-  @FXML
-  private TextArea explain;
-  @FXML
-  private TextField type;
+  private Label wordLabel1;
 
-  public void initialize(URL url, ResourceBundle rb) {
+  private static Dictionary dt = new Dictionary();
+  private ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
+  private Word presentWord;
 
+  public static Dictionary getDt() {
+    return dt;
   }
 
-  Dictionary dt = new Dictionary();
-  ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
-  Word presentWord;
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    dt.setWords(rd.read());
+    //textarea.setEditable(false);
+  }
+
   //
 //  @FXML
 //  public void doSearch() {
@@ -97,6 +102,7 @@ public class HelloController {
     }
     textarea.setText(wordStr);
     wordLabel.setText(presentWord.getWord_target());
+    wordLabel1.setText(presentWord.getPhonetic());
 //    wordLabel.setFont(Font.font(24));
 //    wordLabel.setTextFill(Color.BLUE);
   }
@@ -110,9 +116,6 @@ public class HelloController {
   }
 
   public void displayWord() {
-    dt.setWords(rd.read());
-    //textarea.setEditable(false);
-    list_word.getChildren().clear();
     if (!txt.getText().isEmpty()) {
       String inputStr = txt.getText();
       ArrayList<Word> displayWord = dt.advancedSearchWord(inputStr);
@@ -144,35 +147,52 @@ public class HelloController {
   @FXML
   public void editWord() {
     String[] wordStr = textarea.getText().split("\\n");
-
+    String[] temp = wordStr[0].split("Loại: ");
+    String type = temp[1];
+    String word_target = presentWord.getWord_target();
     ArrayList<Description> description = new ArrayList<>();
-    description.add(new Description(explain.getText()));
-    Word newWord = new Word(taget.getText(), type.getText(), description);
+    String definition = "";
+    ArrayList<String> example = new ArrayList<>();
+    for (int i = 2; i < wordStr.length; i++) {
+      if (Objects.equals(wordStr[i], "")) {
+        description.add(new Description(definition, example));
+        definition = "";
+        example.clear();
+        continue;
+      }
+      if (wordStr[i].charAt(0) == 'N') {
+        /*if (!Objects.equals(definition, "")) {
+          description.add(new Description(definition, example));
+          definition = "";
+          example.clear();
+        }*/
+        temp = wordStr[i].split("Nghĩa: ");
+        definition = temp[1];
+      } else if (wordStr[i].charAt(0) == 'V') {
+        temp = wordStr[i].split("Ví dụ: ");
+        example.add(temp[1]);
+      }
+    }
+    if (!Objects.equals(definition, "")) {
+      description.add(new Description(definition, example));
+    }
+    Word newWord = new Word(word_target, type, description, presentWord.getPhonetic());
+    dt.getWordList().remove(presentWord);
+    presentWord = null;
     DictionaryManagement.addWordsToDictionary(newWord, dt);
+    DictionaryManagement.sortDictionary(dt);
     //presentWord
   }
 
   @FXML
   public void deleteWord() {
     dt.getWordList().remove(presentWord);
-  }
-
-  @FXML
-  public void saveAdd() {
-    ArrayList<Description> description = new ArrayList<>();
-    description.add(new Description(explain.getText()));
-    Word newWord = new Word(taget.getText(), type.getText(), description);
-    DictionaryManagement.addWordsToDictionary(newWord, dt);
+    presentWord = null;
   }
 
   @FXML
   public void changeSceneAdd() {
     HelloApplication.window.setScene(HelloApplication.sceneAdd);
-  }
-
-  @FXML
-  public void doMain() {
-    HelloApplication.window.setScene(HelloApplication.sceneMain);
   }
 
 //    public static class InternetConnection {

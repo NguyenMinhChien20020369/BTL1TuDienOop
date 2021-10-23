@@ -16,12 +16,13 @@ public class HelloApplication extends Application {
     public static Stage window;
     public static Scene sceneAdd;
     public static Scene sceneMain;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         FXMLLoader fxmlLoaderAdd = new FXMLLoader(HelloApplication.class.getResource("Add.fxml"));
-        sceneMain = new Scene(fxmlLoader.load(), 1200, 762);
-        sceneAdd = new Scene(fxmlLoaderAdd.load(), 1200, 762);
+        sceneMain = new Scene(fxmlLoader.load(), 1212, 769);
+        sceneAdd = new Scene(fxmlLoaderAdd.load(), 1212, 769);
         window = stage;
         window.setTitle("Hello!");
         window.setScene(sceneMain);

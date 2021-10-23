@@ -7,10 +7,8 @@ import Overall.DictionaryCommandLine;
 import com.darkprograms.speech.translator.GoogleTranslate;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class DictionaryManagement {
 
@@ -117,8 +115,8 @@ public class DictionaryManagement {
 
   public static void addWordsToDictionary(Word wordsToAdd, Dictionary myDictionary) {
     //myDictionary.getWordList().add(wordsToAdd);
-    Word lookedUpWord = myDictionary.lookup(wordsToAdd.getWord_target());
-    if (lookedUpWord == null) {
+    Word lookedUpWord = myDictionary.searchWord(wordsToAdd.getWord_target());
+    if (Objects.equals(lookedUpWord.getWord_target(), "")) {
       myDictionary.getWordList().add(wordsToAdd);
     }
     /*String tempWord_explain = "";
@@ -178,7 +176,28 @@ public class DictionaryManagement {
     }
   }
 
+//  public static void sortDictionary(Dictionary myDictionary) {
+//    myDictionary.getWordList().sort(new Comparator<Word>() {
+//      @Override
+//      public int compare(Word w1, Word w2) {
+//        if (w1.getWord_target().toLowerCase().charAt(0) < w2.getWord_target().toLowerCase()
+//            .charAt(0)) {
+//          return -1;
+//        } else if (w1.getWord_target().toLowerCase().charAt(0) > w2.getWord_target().toLowerCase()
+//            .charAt(0)) {
+//          return 1;
+//        }
+//        return w1.getWord_target().toLowerCase().compareTo(w2.getWord_target().toLowerCase());
+//      }
+//    });
+//  }
+
   public static void sortDictionary(Dictionary myDictionary) {
+    HashSet<Word> hs = new HashSet<>();
+    hs.addAll(myDictionary.getWordList());
+    myDictionary.getWordList().clear();
+    myDictionary.getWordList().addAll(hs);
+
     myDictionary.getWordList().sort(new Comparator<Word>() {
       @Override
       public int compare(Word w1, Word w2) {
@@ -191,10 +210,10 @@ public class DictionaryManagement {
           index2++;
         }
         if (w1.getWord_target().toLowerCase().charAt(index1) < w2.getWord_target().toLowerCase()
-            .charAt(index2)) {
+                .charAt(index2)) {
           return -1;
         } else if (w1.getWord_target().toLowerCase().charAt(index1) > w2.getWord_target().toLowerCase()
-            .charAt(index2)) {
+                .charAt(index2)) {
           return 1;
         }
         return w1.getWord_target().toLowerCase().compareTo(w2.getWord_target().toLowerCase());
@@ -222,4 +241,23 @@ public class DictionaryManagement {
     }
     return word;
   }
+
+  /*public void insertFromFile() throws IOException {
+    String path = "C:\\Users\\Hai Anh\\Downloads\\BTL1TuDienOop-KhongCoAPI\\src\\main\\resources\\Data\\lingoes\\E_V1.html";
+    File file = new File(path);
+    Scanner sc = new Scanner(file, String.valueOf(StandardCharsets.UTF_8));
+    double startTime = System.currentTimeMillis();
+    while (sc.hasNext()){
+      Word word = new Word();
+      String st = sc.nextLine();
+      Extract es = new Extract();
+      word = es.getWordSrc(st);
+      dictionary.addWord(word);
+    }
+//    double endTime = System.currentTimeMillis();
+//    System.out.println("Duration: "+(endTime-startTime));
+    sc.close();
+    ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
+    rd.write(dictionary.getWordList(),"C:\\Users\\Hai Anh\\Downloads\\BTL1TuDienOop-KhongCoAPI\\src\\main\\resources\\Data\\lingoes\\dictionaries.txt");
+  }*/
 }

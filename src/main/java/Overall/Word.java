@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Word {
-
+  private String phonetic;
   private String word_target;
   private String word_explain;
   HashMap<String, ArrayList<Description>> meaning = new HashMap<String, ArrayList<Description>>();
@@ -22,6 +22,12 @@ public class Word {
   public Word(String word_target, String type, ArrayList<Description> description) {
     this.word_target = word_target.trim();
     this.meaning.put(type.trim(), description);
+  }
+
+  public Word(String word_target, String type, ArrayList<Description> description, String phonetic) {
+    this.word_target = word_target.trim();
+    this.meaning.put(type.trim(), description);
+    this.phonetic = phonetic;
   }
 
   public void displayWord() {
@@ -50,7 +56,16 @@ public class Word {
   }
 
   public void addMeaning(String type, ArrayList<Description> description) {
-    this.meaning.put(type, description);
+    this.phonetic = phonetic;
+    this.meaning.put(type,description);
+  }
+
+  public void setPhonetic(String phonetic) {
+    this.phonetic = phonetic;
+  }
+
+  public String getPhonetic() {
+    return phonetic;
   }
 
   public String getWord_target() {

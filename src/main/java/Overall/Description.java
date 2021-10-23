@@ -18,6 +18,11 @@ public class Description {
     example = new ArrayList<>();
   }
 
+  public Description(String definition, ArrayList<String> example) {
+    this.definition = definition;
+    this.example = new ArrayList<>(example);
+  }
+
   public void setDefinition(String definition) {
     this.definition = definition;
   }
