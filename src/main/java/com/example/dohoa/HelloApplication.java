@@ -16,6 +16,7 @@ public class HelloApplication extends Application {
     public static Stage window;
     public static Scene sceneAdd;
     public static Scene sceneMain;
+    public static Scene sceneLoading;
 
     @Override
     public void start(Stage stage) throws IOException {
