@@ -1,5 +1,6 @@
 package Overall;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -35,23 +36,21 @@ public class DictionaryCommandLine {
     //showAllWords(myDictionary);
   }
 
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    Dictionary myDictionary = new Dictionary();
-    dictionaryAdvanced(myDictionary);
-//      String word = "Adjustable prop";
-//      DictionaryManagement.deleteWordFromDictionary("Z- beam", myDictionary);
-//    DictionaryManagement.dictionaryExportToFile(myDictionary);
-//  int expl = myDictionary.searchWord(myDictionary,word);
-//   String a1 = myDictionary.getWordList().get(expl).getWord_explain();
-//
-//      System.out.println(a1);
-//********************************************************************//
-    //DictionaryManagement.deleteWordFromDictionary("Z- beam", myDictionary);
-    //DictionaryManagement.addWordsToDictionary(new Word("has", "là "), myDictionary);
-    sortDictionary(myDictionary);
-    //showAllWords(myDictionary);
-    System.out.println(myDictionary.lookup("Disputes").getWord_explain());
-    DictionaryManagement.dictionaryExportToFile(myDictionary);
+  public static void main(String[] args) throws IOException {
+   // Scanner sc = new Scanner(System.in);
+//    Dictionary myDictionary = new Dictionary();
+//    ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
+//    myDictionary.setWords(rd.read());
+//    //dictionaryAdvanced(myDictionary);
+//     String word = "élitism";
+//    sortDictionary(myDictionary);
+//    Word wd = myDictionary.binaryLookup(0,myDictionary.getWordList().size(),word);
+//    System.out.println(wd.getPhonetic());
+    //DictionaryManagement.dictionaryExportToFile(myDictionary);
+    //Tạo file txt từ html
+    DictionaryManagement dtm = new DictionaryManagement();
+    dtm.insertFromFile();
+
+    //Kết thúc tạo file
   }
 }
