@@ -1,6 +1,5 @@
-package Overall;
-
-import java.io.IOException;
+/*import java.io.IOException;
+import Overall.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -38,7 +37,7 @@ public class DictionaryCommandLine {
 //  }
 
   public static void main(String[] args) throws IOException {
-   // Scanner sc = new Scanner(System.in);
+    // Scanner sc = new Scanner(System.in);
 //    Dictionary myDictionary = new Dictionary();
 //    ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
 //    myDictionary.setWords(rd.read());
@@ -54,3 +53,4 @@ public class DictionaryCommandLine {
     //Kết thúc tạo file
   }
 }
+*/

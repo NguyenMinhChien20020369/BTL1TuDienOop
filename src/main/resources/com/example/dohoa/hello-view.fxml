@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -123,15 +124,8 @@
                            <children>
                               <HBox alignment="TOP_RIGHT" prefHeight="55.0" prefWidth="847.0" style="-fx-background-color: #f0f8ff;" styleClass="root" stylesheets="@giaodien.css">
                                  <children>
-                                    <Label fx:id="wordLabel1" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #faebd7; -fx-font:  italic 1.2em &quot;Fira Sans&quot;, serif;;" styleClass="root" stylesheets="@giaodien.css" />
-                                    <Label fx:id="wordLabel" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #faebd7; -fx-font:  italic 1.2em &quot;Fira Sans&quot;, serif;;" styleClass="root" stylesheets="@giaodien.css">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <padding>
-                                          <Insets left="60.0" />
-                                       </padding>
-                                    </Label>
+                                    <TextField fx:id="target" prefHeight="55.0" prefWidth="136.0" />
+                                    <TextField fx:id="phonetic" prefHeight="55.0" prefWidth="136.0" />
                                     <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="78.0">
                                        <graphic>
                                           <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">

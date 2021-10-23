@@ -33,9 +33,9 @@ public class HelloController implements Initializable {
   @FXML
   private ScrollPane scrollPane1;
   @FXML
-  private Label wordLabel;
+  private TextField phonetic;
   @FXML
-  private Label wordLabel1;
+  private TextField target;
 
   private static Dictionary dt = new Dictionary();
   private ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
@@ -101,8 +101,8 @@ public class HelloController implements Initializable {
       }
     }
     textarea.setText(wordStr);
-    wordLabel.setText(presentWord.getWord_target());
-    wordLabel1.setText(presentWord.getPhonetic());
+    target.setText(presentWord.getWord_target());
+    phonetic.setText(presentWord.getPhonetic());
 //    wordLabel.setFont(Font.font(24));
 //    wordLabel.setTextFill(Color.BLUE);
   }
@@ -149,7 +149,7 @@ public class HelloController implements Initializable {
     String[] wordStr = textarea.getText().split("\\n");
     String[] temp = wordStr[0].split("Loại: ");
     String type = temp[1];
-    String word_target = presentWord.getWord_target();
+    String word_target = target.getText();
     ArrayList<Description> description = new ArrayList<>();
     String definition = "";
     ArrayList<String> example = new ArrayList<>();
@@ -176,7 +176,7 @@ public class HelloController implements Initializable {
     if (!Objects.equals(definition, "")) {
       description.add(new Description(definition, example));
     }
-    Word newWord = new Word(word_target, type, description, presentWord.getPhonetic());
+    Word newWord = new Word(word_target, type, description, phonetic.getText());
     dt.getWordList().remove(presentWord);
     presentWord = null;
     DictionaryManagement.addWordsToDictionary(newWord, dt);

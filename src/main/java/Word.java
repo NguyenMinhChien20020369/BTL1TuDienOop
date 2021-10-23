@@ -1,4 +1,4 @@
-package Overall;
+/*package Overall;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,4 +68,4 @@ public class Word {
   public void setWord_explain(String tempWord_explain) {
     this.word_explain = tempWord_explain.trim();
   }
-}
+}*/

@@ -1,9 +1,8 @@
-package Overall;
-
-import Overall.Dictionary;
-import Overall.DictionaryCommandLine;
+/*import Overall.*;
 
 //import com.darkprograms.speech.translator.GoogleTranslate;
+import Overall.Dictionary;
+import Overall.Extract;
 import com.darkprograms.speech.translator.GoogleTranslate;
 import java.io.*;
 import java.net.URL;
@@ -265,3 +264,4 @@ public class DictionaryManagement {
 //    rd.write(dictionary.getWordList(),"C:\\Users\\Hai Anh\\Downloads\\BTL1TuDienOop-KhongCoAPI\\src\\main\\resources\\Data\\lingoes\\dictionaries.txt");
   }
 }
+*/

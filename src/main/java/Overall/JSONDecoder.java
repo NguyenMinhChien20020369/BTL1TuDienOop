@@ -11,24 +11,24 @@ import java.util.ArrayList;
 
 public class JSONDecoder {
     void addMeaningByType(Word word, JSONObject jo1){
-            JSONArray noun = (JSONArray) jo1.get("definitions");
-            //System.out.println(checkType);
-            String type = (String) jo1.get("partOfSpeech");
-            ArrayList<Description> meaning = new ArrayList<>();
-            for (int i = 0; i < noun.size(); i++) {
-                Description des = new Description();
-                JSONObject def = (JSONObject) noun.get(i);
-                des.setDefinition(def.get("definition").toString());
-                //TODO : MAKE EXAMPLE AS ARRAY
-                if (def.get("examples") != null) {
-                    JSONArray examples = (JSONArray) def.get("examples");
-                    for (Object ex :examples) {
-                        des.setExample(ex.toString());
-                    }
+        JSONArray noun = (JSONArray) jo1.get("definitions");
+        //System.out.println(checkType);
+        String type = (String) jo1.get("partOfSpeech");
+        ArrayList<Description> meaning = new ArrayList<>();
+        for (int i = 0; i < noun.size(); i++) {
+            Description des = new Description();
+            JSONObject def = (JSONObject) noun.get(i);
+            des.setDefinition(def.get("definition").toString());
+            //TODO : MAKE EXAMPLE AS ARRAY
+            if (def.get("examples") != null) {
+                JSONArray examples = (JSONArray) def.get("examples");
+                for (Object ex :examples) {
+                    des.setExample(ex.toString());
                 }
-                meaning.add(des);
             }
-            word.addMeaning(type, meaning);
+            meaning.add(des);
+        }
+        word.addMeaning(type, meaning);
     }
     public  ArrayList<Word> Decoder(String data){
         ArrayList<Word> words = new ArrayList<>();
@@ -41,7 +41,7 @@ public class JSONDecoder {
                 Word word = new Word();
                 JSONObject jo = (JSONObject) ja.get(i);
                 word.setWord_target((String) jo.get("word"));
-
+                word.setPhonetic((String)jo.get("phonetic"));
 
                 //Get the meaning source
                 JSONArray JsonMeaning = (JSONArray) jo.get("meanings");

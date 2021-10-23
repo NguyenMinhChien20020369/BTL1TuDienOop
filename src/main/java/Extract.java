@@ -111,7 +111,7 @@
 //        return  word;
 //    }
 //}
-package Overall;
+/*package Overall;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -220,4 +220,4 @@ public class Extract {
         }
         return  word;
     }
-}
+}*/
