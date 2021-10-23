@@ -60,9 +60,10 @@ public class Dictionary {
       return wordList.size() - 1;
     }
   }
-  public Word searchWord(String inputStr){
-    Word word  = new Word();
-    for (Word a: this.getWordList()){
+
+  public Word searchWord(String inputStr) {
+    Word word = new Word();
+    for (Word a : this.getWordList()) {
       if (a.getWord_target().equals(inputStr)) {
         System.out.println(a.getWord_target());
         word = a;
@@ -70,18 +71,19 @@ public class Dictionary {
     }
     return word;
   }
-  public ArrayList<Word> advancedSearchWord(String inputStr) throws  NullPointerException{
-    Pattern pattern
-            = Pattern.compile(inputStr);
-    ArrayList<Word> keep= new ArrayList<>();
-    int i =0;
 
-    for (Word a: this.getWordList()){
-      if (a.getWord_target() ==null){
+  public ArrayList<Word> advancedSearchWord(String inputStr) throws NullPointerException {
+    Pattern pattern
+        = Pattern.compile(inputStr);
+    ArrayList<Word> keep = new ArrayList<>();
+    int i = 0;
+
+    for (Word a : this.getWordList()) {
+      if (a.getWord_target() == null) {
         System.out.println("There is null word");
       }
-      Matcher matcher= pattern.matcher(a.getWord_target());
-      if (i<10) {
+      Matcher matcher = pattern.matcher(a.getWord_target());
+      if (i < 10) {
         if (a.getWord_target().length() >= inputStr.length()) {
           String dub = a.getWord_target().substring(0, inputStr.length());
           if (matcher.find() == true && inputStr.equals(dub)) {
@@ -90,8 +92,7 @@ public class Dictionary {
             i++;
           }
         }
-      }
-      else if (i==20) {
+      } else if (i == 20) {
         System.out.println("Out of range!");
         break;
       }

@@ -13,13 +13,19 @@ import Overall.HistorySearching;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+    public static Stage window;
+    public static Scene sceneAdd;
+    public static Scene sceneMain;
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 762);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+        FXMLLoader fxmlLoaderAdd = new FXMLLoader(HelloApplication.class.getResource("Add.fxml"));
+        sceneMain = new Scene(fxmlLoader.load(), 1200, 762);
+        sceneAdd = new Scene(fxmlLoaderAdd.load(), 1200, 762);
+        window = stage;
+        window.setTitle("Hello!");
+        window.setScene(sceneMain);
+        window.show();
     }
 
     public static void main(String[] args) {

@@ -120,9 +120,8 @@ public class DictionaryManagement {
     Word lookedUpWord = myDictionary.lookup(wordsToAdd.getWord_target());
     if (lookedUpWord == null) {
       myDictionary.getWordList().add(wordsToAdd);
-      return;
     }
-    String tempWord_explain = "";
+    /*String tempWord_explain = "";
     for (int i = 0; i < lookedUpWord.getWord_explain().length(); i++) {
       if (lookedUpWord.getWord_explain().charAt(i) == ' ') {
         tempWord_explain = "";
@@ -145,7 +144,7 @@ public class DictionaryManagement {
       }
     }
     lookedUpWord.setWord_explain(
-        lookedUpWord.getWord_explain() + ", " + wordsToAdd.getWord_explain());
+        lookedUpWord.getWord_explain() + ", " + wordsToAdd.getWord_explain());*/
   }
 
   public static void insertFromFile(Dictionary myDictionary) {

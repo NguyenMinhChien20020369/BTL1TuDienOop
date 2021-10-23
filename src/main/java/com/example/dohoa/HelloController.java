@@ -1,6 +1,7 @@
 package com.example.dohoa;
 
 import Overall.*;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -29,17 +30,22 @@ public class HelloController {
   private VBox list_word;
   @FXML
   private ScrollPane scrollPane1;
-
-  @FXML
-  private TextField textField;
   @FXML
   private Label wordLabel;
+  @FXML
+  private TextField taget;
+  @FXML
+  private TextArea explain;
+  @FXML
+  private TextField type;
 
   public void initialize(URL url, ResourceBundle rb) {
 
   }
+
   Dictionary dt = new Dictionary();
   ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
+  Word presentWord;
   //
 //  @FXML
 //  public void doSearch() {
@@ -69,25 +75,33 @@ public class HelloController {
 //    textarea.setEditable(false);
 //  }
 
-  public void doSearch(String inputStr){
-    Word word = dt.searchWord(inputStr);
+  public void doSearch(String inputStr) {
+    presentWord = dt.searchWord(inputStr);
 //        System.out.println(word.getWord_target());
     String wordStr = "";
-    for (String a: word.getMeaning().keySet()){
-      if (!a.equals("noType") && !a.equals("noEx"))   wordStr+=a+"\n\n";
-      for (Description b : word.getMeaning().get(a)){
-        wordStr+= b.getDefinition()+"\n";
-        for (String c: b.getExample()){
-          wordStr+=c+"\n";
+    for (String a : presentWord.getMeaning().keySet()) {
+      if (!a.equals("noType") && !a.equals("noEx")) {
+        wordStr += "Loại: " + a + "\n\n";
+      } else {
+        wordStr += "Loại: chưa có" + "\n\n";
+      }
+      for (int i = 0; i < presentWord.getMeaning().get(a).size(); i++) {
+        if (!Objects.equals(presentWord.getMeaning().get(a).get(i).getDefinition(), "")) {
+          wordStr += "Nghĩa: " + presentWord.getMeaning().get(a).get(i).getDefinition() + "\n";
+          for (String c : presentWord.getMeaning().get(a).get(i).getExample()) {
+            wordStr += "Ví dụ: " + c + "\n";
+          }
+          wordStr += "\n";
         }
       }
     }
     textarea.setText(wordStr);
-    wordLabel.setText(word.getWord_target());
+    wordLabel.setText(presentWord.getWord_target());
 //    wordLabel.setFont(Font.font(24));
 //    wordLabel.setTextFill(Color.BLUE);
   }
-  void addClickListener(Label label){
+
+  void addClickListener(Label label) {
     label.setOnMouseClicked(mouseEvent -> {
       String labelStr = label.getText();
       System.out.println(labelStr);
@@ -95,11 +109,11 @@ public class HelloController {
     });
   }
 
-  public void displayWord(){
+  public void displayWord() {
     dt.setWords(rd.read());
-    textarea.setEditable(false);
+    //textarea.setEditable(false);
     list_word.getChildren().clear();
-    if(!txt.getText().isEmpty()) {
+    if (!txt.getText().isEmpty()) {
       String inputStr = txt.getText();
       ArrayList<Word> displayWord = dt.advancedSearchWord(inputStr);
       System.out.println(displayWord.size());
@@ -125,6 +139,40 @@ public class HelloController {
     String word = DictionaryManagement.API(txt.getText());
     System.out.println(word);
     textarea.setText(word);
+  }
+
+  @FXML
+  public void editWord() {
+    String[] wordStr = textarea.getText().split("\\n");
+
+    ArrayList<Description> description = new ArrayList<>();
+    description.add(new Description(explain.getText()));
+    Word newWord = new Word(taget.getText(), type.getText(), description);
+    DictionaryManagement.addWordsToDictionary(newWord, dt);
+    //presentWord
+  }
+
+  @FXML
+  public void deleteWord() {
+    dt.getWordList().remove(presentWord);
+  }
+
+  @FXML
+  public void saveAdd() {
+    ArrayList<Description> description = new ArrayList<>();
+    description.add(new Description(explain.getText()));
+    Word newWord = new Word(taget.getText(), type.getText(), description);
+    DictionaryManagement.addWordsToDictionary(newWord, dt);
+  }
+
+  @FXML
+  public void changeSceneAdd() {
+    HelloApplication.window.setScene(HelloApplication.sceneAdd);
+  }
+
+  @FXML
+  public void doMain() {
+    HelloApplication.window.setScene(HelloApplication.sceneMain);
   }
 
 //    public static class InternetConnection {
