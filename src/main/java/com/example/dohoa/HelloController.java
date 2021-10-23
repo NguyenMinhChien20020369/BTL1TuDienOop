@@ -2,6 +2,7 @@ package com.example.dohoa;
 
 import Overall.*;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -15,7 +16,7 @@ import java.util.ResourceBundle;
 
 import static Overall.DictionaryManagement.sortDictionary;
 
-public class HelloController {
+public class HelloController implements Initializable {
 
   //    @FXML
 //    private Label welcomeText;
@@ -34,12 +35,16 @@ public class HelloController {
   private TextField textField;
   @FXML
   private Label wordLabel;
-
+  @FXML
+  private Label wordLabel1;
+  private Dictionary dt = new Dictionary();
+  private ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
+  @Override
   public void initialize(URL url, ResourceBundle rb) {
-
+    dt.setWords(rd.read());
+    textarea.setEditable(false);
   }
-  Dictionary dt = new Dictionary();
-  ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
+
   //
 //  @FXML
 //  public void doSearch() {
@@ -84,6 +89,7 @@ public class HelloController {
     }
     textarea.setText(wordStr);
     wordLabel.setText(word.getWord_target());
+    wordLabel1.setText(word.getPhonetic());
 //    wordLabel.setFont(Font.font(24));
 //    wordLabel.setTextFill(Color.BLUE);
   }
@@ -96,9 +102,7 @@ public class HelloController {
   }
 
   public void displayWord(){
-    dt.setWords(rd.read());
-    textarea.setEditable(false);
-    list_word.getChildren().clear();
+
     if(!txt.getText().isEmpty()) {
       String inputStr = txt.getText();
       ArrayList<Word> displayWord = dt.advancedSearchWord(inputStr);
