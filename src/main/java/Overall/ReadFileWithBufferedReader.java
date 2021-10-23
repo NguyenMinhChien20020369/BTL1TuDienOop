@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class ReadFileWithBufferedReader {
     public ArrayList<Word> read() {
-        return this.ReadJsonFile("D:\\chuanMuc\\BTL1TuDienOop\\src\\main\\resources\\Data\\lingoes\\emps.json");
+        return this.ReadJsonFile("C:\\Users\\Hai Anh\\Downloads\\BTL1TuDienOop-KhongCoAPI\\src\\main\\resources\\Data\\lingoes\\emps.json");
     }
 
     public  ArrayList<Word> ReadJsonFile(String path) {
