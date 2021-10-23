@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dohoa.HelloController">
+<AnchorPane prefHeight="769.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dohoa.HelloController">
    <children>
       <BorderPane prefHeight="769.0" prefWidth="1212.0" style="-fx-background-color: navy;" styleClass="root" stylesheets="@giaodien.css">
          <top>
@@ -124,8 +124,8 @@
                            <children>
                               <HBox alignment="TOP_RIGHT" prefHeight="55.0" prefWidth="847.0" style="-fx-background-color: #f0f8ff;" styleClass="root" stylesheets="@giaodien.css">
                                  <children>
-                                    <TextField fx:id="target" prefHeight="55.0" prefWidth="136.0" />
-                                    <TextField fx:id="phonetic" prefHeight="55.0" prefWidth="136.0" />
+                                    <TextField fx:id="target" prefHeight="55.0" prefWidth="265.0" />
+                                    <TextField fx:id="phonetic" prefHeight="55.0" prefWidth="258.0" />
                                     <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="78.0">
                                        <graphic>
                                           <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">

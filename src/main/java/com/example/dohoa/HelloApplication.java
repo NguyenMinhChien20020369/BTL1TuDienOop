@@ -20,14 +20,19 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        FXMLLoader fxmlLoaderAdd = new FXMLLoader(HelloApplication.class.getResource("Add.fxml"));
-        sceneMain = new Scene(fxmlLoader.load(), 1212, 769);
-        sceneAdd = new Scene(fxmlLoaderAdd.load(), 1212, 769);
         window = stage;
-        window.setTitle("Hello!");
-        window.setScene(sceneMain);
+        FXMLLoader fxmlLoaderLoading = new FXMLLoader(HelloApplication.class.getResource("Loading.fxml"));
+        sceneLoading = new Scene(fxmlLoaderLoading.load(), 500, 500);
+        window.setTitle("Loading");
+        window.setScene(sceneLoading);
         window.show();
+    }
+
+    @Override
+    public void stop() throws IOException {
+        System.out.println("Stage is closing");
+        DictionaryManagement.JSonCreate(HelloController.getDt());
+        System.out.println("saved");
     }
 
     public static void main(String[] args) {
