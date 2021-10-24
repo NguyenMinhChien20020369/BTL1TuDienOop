@@ -125,13 +125,7 @@ public class DictionaryManagement {
       for (String type : word.getMeaning().keySet()) {
         JSONObject meaningByType = new JSONObject();
 
-        if (!type.equals("noType") && !type.equals("noEx")) {
-          meaningByType.put("partOfSpeech", type);
-        } else if (type.equals("noEx")) {
-          meaningByType.put("partOfSpeech", "noEx");
-        } else if (type.equals("noType")) {
-          meaningByType.put("partOfSpeech", "noType");
-        }
+        meaningByType.put("partOfSpeech", type);
 
         JSONArray jsonDefinitions = new JSONArray();
         for (Description des : word.getMeaning().get(type)) {

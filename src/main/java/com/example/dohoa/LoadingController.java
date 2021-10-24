@@ -1,5 +1,6 @@
 package com.example.dohoa;
 
+import Overall.DictionaryManagement;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,7 +25,6 @@ public class LoadingController implements Initializable {
 
     @Override
     public void run() {
-
       try {
         Thread.sleep(500);
       } catch (InterruptedException e) {
@@ -33,26 +33,28 @@ public class LoadingController implements Initializable {
       Platform.runLater(new Runnable() {
         @Override
         public void run() {
-          FXMLLoader fxmlLoader = new FXMLLoader(
-              HelloApplication.class.getResource("hello-view.fxml"));
-          FXMLLoader fxmlLoaderAdd = new FXMLLoader(
-              HelloApplication.class.getResource("Add.fxml"));
+
+            FXMLLoader fxmlLoader = new FXMLLoader(
+                HelloApplication.class.getResource("hello-view.fxml"));
+            FXMLLoader fxmlLoaderAdd = new FXMLLoader(
+                HelloApplication.class.getResource("Add.fxml"));
+
           try {
-            HelloApplication.sceneMain = new Scene(fxmlLoader.load(), 1212, 769);
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-          try {
-            HelloApplication.sceneAdd = new Scene(fxmlLoaderAdd.load(), 1212, 769);
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-          HelloApplication.window.setTitle("Dictionary");
-          HelloApplication.window.setScene(HelloApplication.sceneMain);
-          rootPane.getScene().getWindow().hide();
+              HelloApplication.sceneMain = new Scene(fxmlLoader.load(), 1212, 769);
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
+            try {
+              HelloApplication.sceneAdd = new Scene(fxmlLoaderAdd.load(), 1212, 769);
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
+            HelloApplication.window.setTitle("Dictionary");
+            HelloApplication.window.setScene(HelloApplication.sceneMain);
+            rootPane.getScene().getWindow().hide();
+
         }
       });
-
     }
   }
 }

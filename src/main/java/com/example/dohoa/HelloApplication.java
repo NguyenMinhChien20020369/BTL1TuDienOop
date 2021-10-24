@@ -1,6 +1,7 @@
 package com.example.dohoa;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,29 +14,49 @@ import Overall.HistorySearching;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-    public static Stage window;
-    public static Scene sceneAdd;
-    public static Scene sceneMain;
-    public static Scene sceneLoading;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        window = stage;
-        FXMLLoader fxmlLoaderLoading = new FXMLLoader(HelloApplication.class.getResource("Loading.fxml"));
-        sceneLoading = new Scene(fxmlLoaderLoading.load(), 500, 500);
-        window.setTitle("Loading");
-        window.setScene(sceneLoading);
-        window.show();
-    }
+  public static Stage window;
+  public static Scene sceneAdd;
+  public static Scene sceneMain;
+  public static Scene sceneLoading;
+  public static Scene sceneSaving;
 
-    @Override
-    public void stop() throws IOException {
-        System.out.println("Stage is closing");
-        DictionaryManagement.JSonCreate(HelloController.getDt());
-        System.out.println("saved");
-    }
+  @Override
+  public void start(Stage stage) throws IOException {
+    window = stage;
+    FXMLLoader fxmlLoaderSaving = new FXMLLoader(
+        HelloApplication.class.getResource("Saving.fxml"));
+    sceneSaving = new Scene(fxmlLoaderSaving.load(), 1150, 769);
+    window.setScene(sceneSaving);
+    FXMLLoader fxmlLoaderLoading = new FXMLLoader(
+        HelloApplication.class.getResource("Loading.fxml"));
+    sceneLoading = new Scene(fxmlLoaderLoading.load(), 1150, 769);
+    window.setTitle("Loading");
+    window.setScene(sceneLoading);
+    window.show();
+    window.setOnCloseRequest(event -> {
+      try {
+        save();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
+  }
 
-    public static void main(String[] args) {
-        launch();
+  public void save() throws IOException {
+    window.setScene(sceneSaving);
+    window.setTitle("Saving");
+    window.show();
+    System.out.println("Stage is closing");
+    try {
+      DictionaryManagement.JSonCreate(HelloController.getDt());
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+    System.out.println("saved");
+  }
+
+  public static void main(String[] args) {
+    launch();
+  }
 }
