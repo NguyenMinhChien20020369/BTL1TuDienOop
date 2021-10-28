@@ -20,6 +20,7 @@ public class ReadFileWithBufferedReader {
     return this.ReadJsonFile(
             "src/main/resources/Data/lingoes/FavouriteWord.json");
   }
+
   public ArrayList<Word> ReadJsonFile(String path) {
     String line = null;
     JSONDecoder JSD = new JSONDecoder();

@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dohoa.LoadingController">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dohoa.LoadingController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="769.0" fitWidth="1212.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Data/icons/loading.jpg" />
+            <Image url="@../../../Data/icons/loading_dep.jpg" />
          </image>
       </ImageView>
-      <Pane prefHeight="500.0" prefWidth="500.0" />
+      <Pane prefHeight="769.0" prefWidth="1150.0" />
    </children>
 </StackPane>

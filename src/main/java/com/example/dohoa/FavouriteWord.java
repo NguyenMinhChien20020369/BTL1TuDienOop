@@ -17,7 +17,7 @@ public class FavouriteWord implements Initializable  {
     @FXML
     private TextArea textarea;
     @FXML
-    private VBox listword;
+    private VBox list_word;
     @FXML
     private ScrollPane scrollPane1;
     @FXML
@@ -28,9 +28,9 @@ public class FavouriteWord implements Initializable  {
     private ReadFileWithBufferedReader rd = new ReadFileWithBufferedReader();
     private Word presentWord;
 
-//    public FavouriteWord(TextArea textarea, VBox listword, ScrollPane scrollPane1, TextField phonetic) {
+//    public FavouriteWord(TextArea textarea, VBox list_word, ScrollPane scrollPane1, TextField phonetic) {
 //        this.textarea = textarea;
-//        this.listword = listword;
+//        this.list_word = list_word;
 //        this.scrollPane1 = scrollPane1;
 //        this.phonetic = phonetic;
 //    }
@@ -39,11 +39,11 @@ public class FavouriteWord implements Initializable  {
         for( Word word :HelloController.getDtFavouriteWord().getWordList()){
             Label word1 = new Label(word.getWord_target());
             addClickListener(word1);
-            this.listword.getChildren().add(word1);
+            this.list_word.getChildren().add(word1);
             //scrollPane1.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
             //scrollPane1.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         }
-        scrollPane1.setContent(listword);
+        scrollPane1.setContent(list_word);
     }
     public void doSearch(String inputStr) {
 

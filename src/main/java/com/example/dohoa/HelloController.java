@@ -47,27 +47,34 @@ public class HelloController implements Initializable {
   private Word presentWord;
   //private HistorySearching HS = new HistorySearching();
 
-  public  static Dictionary getDtFavouriteWord() {
+  public static Dictionary getDtFavouriteWord() {
     return DtFavouriteWord;
   }
-  public  static Dictionary getDt() {
+
+  public static Dictionary getDt() {
     return dt;
   }
-  public  static Dictionary GetDtHistory() {
+
+  public static Dictionary GetDtHistory() {
     return DtHistory;
   }
+
   private String EnglishWord = new String();
+
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     dt.setWords(rd.read());
+    DtHistory.setWords(rd.readHistory());
+    DtFavouriteWord.setWords(rd.readFavouriteWord());
     //textarea.setEditable(false);
   }
+
   @FXML
-  public void Speak(){
+  public void Speak() {
     TTS.SpeakTheWord(this.EnglishWord);
   }
 
-  public void DeleteDuplicate(ArrayList<Word> arr){
+  public void DeleteDuplicate(ArrayList<Word> arr) {
     HashSet<Word> hs = new HashSet<>();
     hs.addAll(arr);
     arr.clear();
@@ -76,8 +83,8 @@ public class HelloController implements Initializable {
 
   public void doSearch(String inputStr) throws IOException {
     presentWord = dt.searchWord(inputStr);
-    DtHistory.getWordList().add(0,presentWord);
-    DeleteDuplicate(DtHistory.getWordList());
+    DtHistory.getWordList().add(0, presentWord);
+    //DeleteDuplicate(DtHistory.getWordList());
 
 //    HS.getWordHistory().add(presentWord);
 //    if(HS.getWordHistory().size() >= 50) HS.getWordHistory().clear();
@@ -104,7 +111,7 @@ public class HelloController implements Initializable {
     textarea.setText(wordStr);
     target.setText(presentWord.getWord_target());
     phonetic.setText(presentWord.getPhonetic());
-    list_word.getChildren().remove(0,list_word.getChildren().size());
+    list_word.getChildren().remove(0, list_word.getChildren().size());
     scrollPane1.setContent(list_word);
 //    wordLabel.setFont(Font.font(24));
 //    wordLabel.setTextFill(Color.BLUE);
@@ -127,7 +134,7 @@ public class HelloController implements Initializable {
     if (!txt.getText().isEmpty()) {
       String inputStr = txt.getText();
       ArrayList<Word> displayWord = dt.advancedSearchWord(inputStr);
-      if(displayWord.size() == 0){
+      if (displayWord.size() == 0) {
         textarea.setText("Hay nhap tu khac vao o search, tu cua ban khong ton tai trong tu dien");
         return;
       }
@@ -203,69 +210,71 @@ public class HelloController implements Initializable {
   }
 
   public void FavouriteWord() throws IOException {
-    DtFavouriteWord.getWordList().add(0,presentWord);
+    DtFavouriteWord.getWordList().add(0, presentWord);
     DeleteDuplicate(DtFavouriteWord.getWordList());
 
   }
+
   @FXML
-  public  void changeSceneAdd() {
+  public void changeSceneAdd() {
     HelloApplication.window.setScene(HelloApplication.sceneAdd);
   }
+
   @FXML
-  public  void changeSceneHistorySearching() throws IOException {
+  public void changeSceneHistorySearching() throws IOException {
     FXMLLoader fxmlLoaderHistory = new FXMLLoader(
-            HelloApplication.class.getResource("HistorySearching.fxml"));
+        HelloApplication.class.getResource("HistorySearching.fxml"));
     try {
       HelloApplication.sceneHistorySearching = new Scene(fxmlLoaderHistory.load(), 1212, 769);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    DTM.JSonCreateHistory(GetDtHistory());
+    //DTM.JSonCreateHistory(GetDtHistory());
     HelloApplication.window.setScene(HelloApplication.sceneHistorySearching);
   }
+
   @FXML
-  public  void changeSceneFavouriteWord() throws IOException {
+  public void changeSceneFavouriteWord() throws IOException {
     FXMLLoader fxmlFavouriteWord = new FXMLLoader(
-            HelloApplication.class.getResource("FavouriteWord.fxml"));
+        HelloApplication.class.getResource("FavouriteWord.fxml"));
     try {
       HelloApplication.sceneFavouriteWord = new Scene(fxmlFavouriteWord.load(), 1212, 769);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    DTM.JSonCreateFavouriteWord(getDtFavouriteWord());
+    //DTM.JSonCreateFavouriteWord(getDtFavouriteWord());
     HelloApplication.window.setScene(HelloApplication.sceneFavouriteWord);
   }
 
 
-
-
-
   @FXML
-  public  static void SceneAdd() {
+  public static void SceneAdd() {
     HelloApplication.window.setScene(HelloApplication.sceneAdd);
   }
+
   @FXML
-  public  static void SceneHistorySearching() throws IOException {
+  public static void SceneHistorySearching() throws IOException {
     FXMLLoader fxmlLoaderHistory = new FXMLLoader(
-            HelloApplication.class.getResource("HistorySearching.fxml"));
+        HelloApplication.class.getResource("HistorySearching.fxml"));
     try {
       HelloApplication.sceneHistorySearching = new Scene(fxmlLoaderHistory.load(), 1212, 769);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    DTM.JSonCreateHistory(GetDtHistory());
+    //DTM.JSonCreateHistory(GetDtHistory());
     HelloApplication.window.setScene(HelloApplication.sceneHistorySearching);
   }
+
   @FXML
-  public  static void SceneFavouriteWord() throws IOException {
+  public static void SceneFavouriteWord() throws IOException {
     FXMLLoader fxmlFavouriteWord = new FXMLLoader(
-            HelloApplication.class.getResource("FavouriteWord.fxml"));
+        HelloApplication.class.getResource("FavouriteWord.fxml"));
     try {
       HelloApplication.sceneFavouriteWord = new Scene(fxmlFavouriteWord.load(), 1212, 769);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    DTM.JSonCreateFavouriteWord(getDtFavouriteWord());
+    //DTM.JSonCreateFavouriteWord(getDtFavouriteWord());
     HelloApplication.window.setScene(HelloApplication.sceneFavouriteWord);
   }
 //    public static class InternetConnection {

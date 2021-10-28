@@ -19,20 +19,42 @@ public class HelloApplication extends Application {
     public static Scene sceneLoading;
     public static Scene sceneHistorySearching;
     public static Scene sceneFavouriteWord;
+    public static Scene sceneSaving;
+
     @Override
     public void start(Stage stage) throws IOException {
         window = stage;
-        FXMLLoader fxmlLoaderLoading = new FXMLLoader(HelloApplication.class.getResource("Loading.fxml"));
-        sceneLoading = new Scene(fxmlLoaderLoading.load(), 500, 500);
+        FXMLLoader fxmlLoaderSaving = new FXMLLoader(
+            HelloApplication.class.getResource("Saving.fxml"));
+        sceneSaving = new Scene(fxmlLoaderSaving.load(), 1150, 769);
+        window.setScene(sceneSaving);
+        FXMLLoader fxmlLoaderLoading = new FXMLLoader(
+            HelloApplication.class.getResource("Loading.fxml"));
+        sceneLoading = new Scene(fxmlLoaderLoading.load(), 1150, 769);
         window.setTitle("Loading");
         window.setScene(sceneLoading);
         window.show();
+        window.setOnCloseRequest(event -> {
+            try {
+                save();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
-    @Override
-    public void stop() throws IOException {
+    public void save() throws IOException {
+        window.setScene(sceneSaving);
+        window.setTitle("Saving");
+        window.show();
         System.out.println("Stage is closing");
-        DictionaryManagement.JSonCreate(HelloController.getDt());
+        try {
+            DictionaryManagement.JSonCreate(HelloController.getDt());
+            DictionaryManagement.JSonCreateHistory(HelloController.GetDtHistory());
+            DictionaryManagement.JSonCreateFavouriteWord(HelloController.getDtFavouriteWord());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("saved");
     }
 
