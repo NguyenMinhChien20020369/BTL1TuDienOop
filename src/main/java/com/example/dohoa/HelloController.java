@@ -111,8 +111,6 @@ public class HelloController implements Initializable {
     textarea.setText(wordStr);
     target.setText(presentWord.getWord_target());
     phonetic.setText(presentWord.getPhonetic());
-    list_word.getChildren().remove(0, list_word.getChildren().size());
-    scrollPane1.setContent(list_word);
 //    wordLabel.setFont(Font.font(24));
 //    wordLabel.setTextFill(Color.BLUE);
   }
@@ -132,6 +130,10 @@ public class HelloController implements Initializable {
 
   public void displayWord() {
     if (!txt.getText().isEmpty()) {
+      list_word.getChildren().remove(0, list_word.getChildren().size());
+      textarea.clear();
+      target.clear();
+      phonetic.clear();
       String inputStr = txt.getText();
       ArrayList<Word> displayWord = dt.advancedSearchWord(inputStr);
       if (displayWord.size() == 0) {
